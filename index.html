@@ -4,21 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="images/pyfav.png">
     <title>100 Days of Python Projects</title>
+    <!--Import python-->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2026.2.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2026.2.1/core.js"></script>
+    <!--Google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!--Google fonts-->
     <link
       href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Nunito:wght@300;400;700;800&display=swap"
       rel="stylesheet"
     />
     <!--CSS only-->
     <link rel="stylesheet" href="css/variables.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-    <h1></h1>
+    <div class="upper-circle">
+      <p class="white-lines-upper line-1">\/\/\/\/\</p>
+      <p class="white-lines-upper line-2">\/\/\/\/\</p>
+      <p class="white-lines-upper line-3">\/\/\/\/\</p>
+      <p class="white-lines-upper line-4">\/\/\/\/\</p>
+      <p class="white-lines-upper line-5">\/\/\/\/\</p>
+    </div>
+    <div class="title-container">
+        <h1 class="title">100 Days of Python</h1>
+        <a href="" class="project-redirect">Random project</a>
+    </div>
+    <section class="projects-container">
+        <ul id="projects-list"></ul>
+    </section>
+    <aside>
+      <div class="lower-circle">
+        <p class="white-lines-upper line-1">\/\/\/\/</p>
+        <p class="white-lines-upper line-2">\/\/\/\/</p>
+      </div>
+      <div class="logo">
+        <div class="stylish-beer">
+          <div class="bracket"><span>{</span></div>
+          <div class="beer"></div>
+          <div class="bracket"><span>}</span></div>
+          <div class="handle"><span>></span></div>
+        </div>
+        <div class="beer-text">
+          <p>As seen on the</p>
+          <p>App Brewery</p>
+        </div>
+      </div>
+    </aside>
 
-    <script src="script.js"></script>
+    <script type="py" src="python/main.py" config="python/pyscript.json"></script>
 </body>
 </html>

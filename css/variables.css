@@ -1,0 +1,13 @@
+:root {
+  /* COLORS */
+  --black: #000;
+  --white: #fff;
+  --blue58: #586ba4;
+  --yellowfc: #fcdc57;
+  --pinkfc: #fcb0b3;
+  --reda1: #a10035;
+
+  /* FONTS */
+  --font-sans: "Nunito", sans-serif;
+  --font-serif: "Lora", serif;
+}
