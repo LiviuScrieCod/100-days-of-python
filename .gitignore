@@ -1,7 +1,10 @@
 .idea/
+.idea_modules/
+*.iml
 __pycache__/
 *.pyc
 .venv/
 venv/
 Python Pledge of Programming.pdf
 Python Days*
+Scratches/
