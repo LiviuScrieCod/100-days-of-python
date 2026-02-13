@@ -10,6 +10,7 @@
   /* FONTS */
   --font-sans: "Nunito", sans-serif;
   --font-serif: "Lora", serif;
+  --font-mono: "VT323", monospace;
 
   /* VARIABLES */
   --step: 5rem;
