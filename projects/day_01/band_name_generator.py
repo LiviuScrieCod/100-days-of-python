@@ -2,7 +2,7 @@ import random
 from collections import Counter
 from data import question_pool
 
-generator_session_log= []
+generator_session_log = []
 
 while True:
     answer=''
@@ -19,11 +19,17 @@ while True:
     band_name = 'The '+ f"{answer}'" if answer.endswith('s') else 'The ' + f"{answer}s"
     print(band_name)
     generator_session_log.append(band_name)
-    again = input("Generate one more name? y/n/history").lower()
-    if again == 'history':
-        print("\nThus were born:")
-        for band in generator_session_log:
-            print(band)
-        again = input("\nGenerate one more name? y/n").lower()
-    if again != 'y':
+    while True:
+        again = input("Generate one more name? y/n/history").lower().strip()
+        if again == 'history':
+            print("\nThus were born:")
+            for band in generator_session_log:
+                print(band)
+            print("\n")
+            continue
+        if again in ['y','n']:
+            break
+
+    if again=='n':
+        print("Thank you for using Band Name Generator!")
         break
