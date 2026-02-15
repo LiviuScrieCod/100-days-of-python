@@ -1,8 +1,10 @@
 {
-  "fetch": [
+  "files":
     {
-    "files": ["main.py", "project_info.py", "../projects/day_01/data.py", "../projects/day_01/art.py"]
+      "main.py": "main.py",
+      "project_info.py": "project_info.py",
+      "../projects/day_01/data.py": "../projects/day_01/data.py",
+      "../projects/day_01/art.py": "../projects/day_01/art.py"
     }
-  ]
 }
 
