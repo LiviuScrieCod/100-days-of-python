@@ -40,3 +40,6 @@ The whole UI is basically fueled by a Python dictionary. I didn't want to waste 
 * A simple "tip calculator" app, meant to take in the bill total, number of customers and tip amount (%) and return the user's amount (mean+tip)
 * Decided to give it a sassy voice and include some "dialog"
 * I'm still figuring out the mvc party of the whole project so I focused on app logic exclusively
+* Finished logic and tested, project done!
+
+### Day 6: TBD
