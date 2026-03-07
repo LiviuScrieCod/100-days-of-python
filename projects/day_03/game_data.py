@@ -67,23 +67,33 @@ story_texts = {
             "back there has found its dinner. You keep moving, heart hammering against your ribs."
         ),
     },
-    "trap": (
-        "As you step forward, a heavy 'CLICK' echoes through the narrow tunnel. "
-        "The stone slab beneath your boot sinks slightly, and everything goes silent. "
-        "You feel a sudden rush of air from the walls. You have a split second to react! "
-    ),
-    "trap_success": (
-        "Your reflexes save your life! You move with a burst of speed just as a "
-        "deadly spray of stone shards whistles through the air where you stood "
-        "moments ago. You land hard on the dusty floor, gasping, but untouched. "
-        "The trap is spent. You pick yourself up and keep going."
-    ),
-    "trap_failure": (
-        "You stumble for a fraction of a second,"
-        "just long enough for the trap to find its mark. "
-        "Sharp stone projectiles graze your side, tearing through your armor and "
-        "leaving a deep, bloody gash. You lose 30 HP!"
-    ),
+    "third_encounter": {
+        "trap": (
+            "As you step forward, a heavy **CLICK** echoes through the narrow tunnel. "
+            "The stone slab beneath your boot sinks slightly, and everything goes silent. "
+            "You feel a sudden rush of air from the walls. You have a split second to react! "
+        ),
+        "hesitation": (
+            "\nYour heart hammers against your ribs, and for a moment, terror freezes your blood. "
+            "The split-second required to choose passes in a blur of panic. Because of your "
+            "indecision, you are forced to react purely on instinct!"
+        ),
+        "trap_success": (
+            "Your reflexes save your life! You move with a burst of speed just as a "
+            "deadly spray of stone shards whistles through the air where you stood "
+            "moments ago. You land hard on the dusty floor, gasping, but untouched. "
+            "The trap is spent. You pick yourself up and keep going."
+        ),
+        "trap_failure": (
+            "You stumble for a fraction of a second,"
+            "just long enough for the trap to find its mark. "
+            "Sharp stone projectiles graze your side, tearing through your armor and "
+            "leaving a deep, bloody gash. You lose 30 HP!"
+        ),
+    },
+    "fourth_encounter": {
+
+    },
     "hub": (
         "As you walk you end up in a grand, circular hall. The air is stagnant and heavy with the scent of "
         "sulfur. Three paths lie before you, each whispering a different promise of fate."
@@ -161,10 +171,9 @@ prompts = {
     "second_encounter": {
         "two_tunnels": "\nFollow the sound to the 'left' or continue on the 'right' gallery? >>>  ",
     },
-
-
-    "tunnel_split": "\nWill you go 'left' or 'right'?",
-    "trap": "\nDo you 'sprint' forward or 'roll' to the side?",
+    "third_encounter": {
+        "trap": "\nDo you 'sprint' forward or 'roll' to the side?",
+    },
     "hub": "\nDo you go 'left', 'right' or 'ahead'?",
     "sleeping_goblin": "\nDo you 'steal' the keys or 'leave' before he wakes up?",
     "final_decision": "\nWill you 'fight' or 'flee'?",

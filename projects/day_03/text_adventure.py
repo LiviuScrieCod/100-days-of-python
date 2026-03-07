@@ -25,7 +25,6 @@ while player_stats["is_alive"]:
     print(story_texts["first_encounter"]["cave_entrance"])
     print(story_texts["first_encounter"]["door"])
     # 2. First encounter
-    # 2.1. Inventory logic
     while True:
         choice = input(prompts["first_encounter"]["door"]).lower().strip()
         if choice == "ignore":
@@ -36,6 +35,7 @@ while player_stats["is_alive"]:
             while True:
                 choice2 = input(prompts["first_encounter"]["explore"]).lower().strip()
                 if choice2 == "center":
+                    # 2.1. Inventory logic
                     print(story_texts["first_encounter"]["healing_potion"])
                     player_stats["inventory"].append("healing_potion")
                     # print(player_stats["inventory"])
@@ -56,27 +56,48 @@ while player_stats["is_alive"]:
             print("Focus brave knight, time is of the essence!")
             continue
         break
-
-    # 3. Noise further ahead in the tunnel
+    print("-------------------------------------------------------------------")
+    # 3. Second encounter
     print(story_texts["second_encounter"]["tunnel_split"])
-    # 3.1. Go left outcome
     while True:
         choice3 = input(prompts["second_encounter"]["two_tunnels"]).lower().strip()
+        # 3.1. 'Go left' outcome
         if choice3 == "left":
             print(story_texts["second_encounter"]["tunnel_split_left"])
             player_stats["is_alive"] = False
-            player_stats["hp"] = 100
             break
+        # 3.2. 'Go right' account
         elif choice3 == "right":
             print(story_texts["second_encounter"]["tunnel_split_right"])
         else:
             print("Focus brave knight, time is of the essence!")
             continue
         break
+    print("-------------------------------------------------------------------")
+    if not player_stats["is_alive"]:
+        break
+
+    # 4. Third encounter
+    print(story_texts["third_encounter"]["trap"])
+    while True:
+        choice4 = input(prompts["third_encounter"]["trap"]).lower().strip()
+        is_lucky = random.choice([True, False])
+        if choice4 not in ["sprint", "roll"]:
+            print(story_texts["third_encounter"]["hesitation"])
+        if is_lucky:
+            print(story_texts["third_encounter"]["trap_success"])
+            break
+        else:
+            print(story_texts["third_encounter"]["trap_failure"])
+            player_stats["hp"] -= 30
+            if player_stats["hp"] <= 0:
+                player_stats["is_alive"] = False
+            break
+    if not player_stats["is_alive"]:
+        break
+    print("-------------------------------------------------------------------")
 
 
-    # 3.2. Go right account
-    # 4.2. Trap encounter
     # 5.2. Triple choice encounter
     # 5.2.1. Door on left encounter
     # 5.2.2. Door on right encounter
