@@ -34,3 +34,9 @@ The whole UI is basically fueled by a Python dictionary. I didn't want to waste 
 * Did some testing towards mimicking an mvc system; more work needs to be done
 * Redid the BNG logic to include the option to try generating more names (refactoring)
 * Merged branch
+
+### Day 5: Opinionated tip calculator
+* New branch, basic app logic developed, based on course instructions
+* A simple "tip calculator" app, meant to take in the bill total, number of customers and tip amount (%) and return the user's amount (mean+tip)
+* Decided to give it a sassy voice and include some "dialog"
+* I'm still figuring out the mvc party of the whole project so I focused on app logic exclusively
