@@ -1,31 +1,52 @@
 story_texts = {
     "adventure_start": "\nWelcome, brave knight! Are you ready to face the unknown and resque the fair maiden? Glory awaits for a noble soul to step forth! (type start to begin) ",
-    "cave_entrance": (
-        "The air grows heavy, smelling of damp earth and ancient decay. "
-        "The cave mouth swallows the daylight, leaving you with only the sound "
-        "of your breath and the echo of water droplets hitting the stone. "
-        "You are inside. There is no turning back now."
-    ),
-    "first_door": (
-        "After a few steps into the dense gloom, your boot strikes something metallic. "
-        "On the left wall, camouflaged by thick layers of moss and dust, stands an oak door "
-        "reinforced with rusted iron bands. It doesn't look like it has been opened in centuries. "
-    ),
-    "first_chamber": (
-        "The hinges groan in protest as you push the door open. Inside, the air is stagnant, "
-        "filled with the smell of old parchment and dried herbs. Moonlight filters through "
-        "a crack in the ceiling, illuminating a single stone pedestal in the center of the room."
-    ),
-    "healing_potion_1": (
-        "Resting upon the pedestal is a small, ornate glass vial filled with a shimmering "
-        "crimson liquid. Even in the dim light, it seems to glow with a faint, reassuring warmth. "
-        "You have found a Healing Potion!"
-    ),
-    "hallway_1": (
-        "You step back out into the main tunnel, the heavy door thudding shut behind you. "
-        "The silence is broken by a rhythmic, scraping sound coming from deeper within the darkness... "
-        "It sounds like something heavy being dragged across the stone floor."
-    ),
+    "first encounter": {
+        "cave_entrance": (
+            "\nThe air grows heavy, smelling of damp earth and ancient decay. "
+            "The cave mouth swallows the daylight, leaving you with only the sound "
+            "of your breath and the echo of water droplets hitting the stone. "
+            "You are inside. There is no turning back now."
+        ),
+        "door": (
+            "\nAfter a few steps into the dense gloom, your boot strikes something metallic. "
+            "On the left wall, camouflaged by thick layers of moss and dust, stands an oak door "
+            "reinforced with rusted iron bands. It doesn't look like it has been opened in centuries. "
+        ),
+        "chamber": (
+            "\nThe hinges groan in protest as you push the door open. Inside, the air is stagnant, "
+            "smelling of old parchment and dried herbs. Moonlight filters through a crack in the "
+            "ceiling, split between two sights: "
+            "\n1. In the 'center', a pristine stone pedestal, untouched by time. "
+            "\n2. In the far 'corner', a pile of rotted crates and discarded bone-meal lies in the shadows, "
+            "where something small and metallic glints amidst the filth."
+        ),
+        "healing_potion": (
+            "\nYou kneel before the pedestal, letting the silence of the chamber wrap around you. "
+            "As your whispered prayer ends, the air seems to hum in response. A sudden, "
+            "brilliant spark ignites within a small, ornate glass vial that was hidden in the "
+            "shadows of the stone. It is filled with a shimmering crimson liquid that glows with "
+            "a faint, reassuring warmth. Your faith has been rewarded with a Healing Potion!"
+        ),
+        "rat_bite": (
+            "\nGreed or curiosity drives your hand into the pile of rot. For a split second, "
+            "the metallic glint is within reach, but the shadows breathe first. A massive, "
+            "plague-scarred rat lunges with startling speed, its yellowed incisors sinking "
+            "deep into your wrist. The bite is foul, tasting of copper and ancient decay. "
+            "\nYou recoil, flinging the vermin back into the dark, but the damage is done. "
+            "The glint was nothing more than a rusted, worthless nail — a cruel lure for the unwary."
+        ),
+        "exit_chamber": (
+            "\nYou step back out into the main tunnel, the heavy door thudding shut behind you. "
+            "The silence is broken by a rhythmic, scraping sound coming from deeper within the darkness... "
+            "It sounds like something heavy being dragged across the stone floor."
+        ),
+        "ignore_door": (
+            "\nYou cast a wary glance at the ornate door but decide some secrets "
+            "are best left undisturbed. Tightening your grip on your torch, "
+            "you march past it, the rhythmic echo of your boots the only sound "
+            "in the deepening silence of the corridor."
+        )
+    },
     "tunnel_split": (
         "The tunnel widens into a jagged limestone throat. To the 'LEFT', the air is freezing, "
         "and that rhythmic scraping sound has turned into a heavy, wet thud. To the 'RIGHT', "
@@ -131,7 +152,11 @@ story_texts = {
 }
 
 prompts = {
-    "first_door": "\nDo you 'enter' the chamber or 'ignore' it? >>>  ",
+    "first_encounter": {
+        "door": "\nDo you 'enter' the chamber or 'ignore' it? >>>  ",
+        "explore": "\n Where do you go, Sir Knight: 'center', 'corner' or 'leave room'? >>> "
+    },
+
     "two_tunnels": "\nFollow the sound to the 'left' or continue on the 'right' gallery? >>>  ",
     "tunnel_split": "\nWill you go 'left' or 'right'?",
     "trap": "\nDo you 'sprint' forward or 'roll' to the side?",

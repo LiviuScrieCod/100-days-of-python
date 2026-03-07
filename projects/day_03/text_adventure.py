@@ -21,8 +21,36 @@ while True:
 
 while player_stats["is_alive"]:
     # TODO:
-    # 1. Entering the cave scene
-    # 2. Door on the left encounter
+    # 1. Entering the cave
+    print(story_texts["first_encounter"]["cave_entrance"])
+    # 2. First encounter
+    # 2.1. Inventory logic
+    while True:
+        choice = input(prompts["first_encounter"]["door"]).lower().strip()
+        if choice == "ignore":
+            print(story_texts["first_encounter"]["ignore_door"])
+            break
+        elif choice == 'enter':
+            print(story_texts["first_encounter"]["chamber"])
+            choice2 = input(prompts["first_encounter"]["explore"]).lower().strip()
+            if choice2 == "center":
+                print(story_texts["first_encounter"]["healing_potion"])
+                player_stats["inventory"].append("healing_potion")
+                print(story_texts["first_encounter"]["exit_chamber"])
+                break
+            elif choice2 == 'corner':
+                continue
+            elif choice2 == 'leave room':
+                print(story_texts["first_encounter"]["exit_chamber"])
+                break
+            else:
+                print("Focus brave knight, time is of the essence!")
+
+        else:
+            print("Focus brave knight, time is of the essence!")
+
+
+
     # 3. Noise further ahead in the tunnel
     # 3.1. Go left outcome
     # 3.2. Go right account
