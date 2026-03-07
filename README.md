@@ -42,4 +42,8 @@ The whole UI is basically fueled by a Python dictionary. I didn't want to waste 
 * I'm still figuring out the mvc party of the whole project so I focused on app logic exclusively
 * Finished logic and tested, project done!
 
-### Day 6: TBD
+### Day 6: Text adventure
+* New project, new branch
+* I'll be creating a text adventure (and ascii art) game
+* A hero enters a cave to resque the princess (classic) but perils await him at all steps. Will he be met with a gruesome fate or live on to tell the tale?
+* 
