@@ -31,4 +31,6 @@ The whole UI is basically fueled by a Python dictionary. I didn't want to waste 
 * Realize I bit off more than I could chew and decided to change my strategy: switch to individual projects while I figure out how to make a proper mvc-ish system
 
 ### Day 4: Still at Band Name Generator project
-* 
+* Did some testing towards mimicking an mvc system; more work needs to be done
+* Redid the BNG logic to include the option to try generating more names (refactoring)
+* Merged branch
