@@ -26,11 +26,87 @@ story_texts = {
         "The silence is broken by a rhythmic, scraping sound coming from deeper within the darkness... "
         "It sounds like something heavy being dragged across the stone floor."
     ),
+    "tunnel_split": (
+        "The tunnel widens into a jagged limestone throat. To the 'LEFT', the air is freezing, "
+        "and that rhythmic scraping sound has turned into a heavy, wet thud. To the 'RIGHT', "
+        "the passage is narrow and reeks of old bone, but it seems to lead upward. "
+    ),
+    "tunnel_split_left": (
+        "You venture left, drawn by the sound. As you step into the darkness, the noise stops. "
+        "A cold, oppressive shadow detaches itself from the ceiling above. You look up just "
+        "in time to see a mass of obsidian claws descending. Everything goes black. "
+        "You've found the source of the noise... and it was hungry."
+        "GAME OVER!"
+    ),
+    "tunnel_split_right": (
+        "You scramble to the right, squeezing through the tight passage. Just as you move "
+        "out of sight, a blood-curdling shriek echoes behind you, "
+        "followed by the sickening sound of stone being shredded. Whatever was lurking "
+        "back there has found its dinner. You keep moving, heart hammering against your ribs."
+    ),
+    "trap": (
+        "As you step forward, a heavy 'CLICK' echoes through the narrow tunnel. "
+        "The stone slab beneath your boot sinks slightly, and everything goes silent. "
+        "You feel a sudden rush of air from the walls. You have a split second to react! "
+    ),
+    "trap_success": (
+        "Your reflexes save your life! You move with a burst of speed just as a "
+        "deadly spray of stone shards whistles through the air where you stood "
+        "moments ago. You land hard on the dusty floor, gasping, but untouched. "
+        "The trap is spent. You pick yourself up and keep going."
+    ),
+    "trap_failure": (
+        "You stumble for a fraction of a second,"
+        "just long enough for the trap to find its mark. "
+        "Sharp stone projectiles graze your side, tearing through your armor and "
+        "leaving a deep, bloody gash. You lose 30 HP!"
+    ),
+    "hub": (
+        "As you walk you end up in a grand, circular hall. The air is stagnant and heavy with the scent of "
+        "sulfur. Three paths lie before you, each whispering a different promise of fate."
+        "To the 'LEFT', a heavy iron-bound door stands slightly ajar, a faint golden light "
+        "flickering through the crack. "
+        "To the 'RIGHT', a massive stone door is firmly locked; its surface is etched with "
+        "faded runes of warding. "
+        "Straight 'AHEAD', an ominous hallway stretches into total darkness, echoing with "
+        "a low, guttural vibration that makes your teeth rattle."
+    ),
+    "hub_left_door": (
+        "You push the door open and freeze. In the center of the room, a slumped "
+        "figure sits on a rickety wooden chair. It's a Goblin guard, snoring loudly "
+        "with his head tilted back. Hanging from his thick leather belt is a heavy "
+        "iron key ring. The keys glint in the candlelight, just inches from his hand."
+    ),
+    "hub_right_door_no key": (
+        "You rattle the handle, but the stone door doesn't budge. You'll need a way "
+        "to bypass this lock if you want to see what's hidden behind the runes."
+    ),
+    "hub_ahead": (
+        "You make your way through to the central hallway. The temperature drops "
+        "instantly. Every instinct tells you to run, but glory lies just a few "
+        "more steps ahead, where the shadows seem to be moving on their own. " 
+        "There is no turning back now."
+    ),
+    "stealth_success": (
+        "Holding your breath, you reach out with trembling fingers. The iron is cold "
+        "and heavy, but you manage to unhook the ring without a sound. The Goblin "
+        "scratches his nose in his sleep but doesn't stir. You've got the Skeleton Key!"
+    ),
+    "stealth_failure": (
+        "As you reach for the belt, your armor clinks against the chair. The Goblin's "
+        "eyes snap open, bloodshot and wide. He lets out a shrill alarm whistle and "
+        "swipes at you with a jagged dagger! You barely dodge, but you have to flee "
+        "empty-handed. No keys for you this time!"
+    )
 }
 
 prompts = {
     "first_door": "\nDo you 'enter' the chamber or 'ignore' it? >>>  ",
-    "two_tunnels": "\nFollow the sound to the 'left' or continue on the 'right' gallery? >>>  "
+    "two_tunnels": "\nFollow the sound to the 'left' or continue on the 'right' gallery? >>>  ",
+    "tunnel_split": "\nWill you go 'left' or 'right'?",
+    "trap": "\nDo you 'sprint' forward or 'roll' to the side?",
+    "hub": "\nDo you go 'left', 'right' or 'ahead'?",
+    "sleeping_goblin": "\nDo you 'steal' the keys or 'leave' before he wakes up?"
 }
 
 art_assets = {
