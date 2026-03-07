@@ -1,0 +1,7 @@
+{
+  "fetch": [
+    {
+    "files": ["main.py", "project_info.py"]
+    }
+  ]
+}
