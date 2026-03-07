@@ -24,3 +24,7 @@ The whole UI is basically fueled by a Python dictionary. I didn't want to waste 
 
 ### Day 3: Band Name Generator
 * Implemented a default html/css for the first and future projects (old crt terminal vibe)
+* Created a list of 10 questions to be prompted at random
+* Added weight so that users get mostly 2-4 questions in order to avoid lengthy names
+* Ability to check all names generated during a single session
+* Added ASCII art for design
