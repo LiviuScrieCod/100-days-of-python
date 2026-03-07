@@ -16,6 +16,7 @@ player_stats = {
 }
 
 round_no = 1
+healed = False
 
 bbeg_stats = {
     "hp": 100,
@@ -106,6 +107,7 @@ while player_stats["is_alive"]:
             print(art_assets["misc"]["go"])
             player_stats["is_alive"] = False
             bgtrack.terminate()
+            go_track = subprocess.Popen(['powershell', music["go"]])
             break
         # 3.2. 'Go right' account
         elif choice3 == "right":
@@ -221,7 +223,9 @@ while player_stats["is_alive"]:
     elif finale == "flee":
         #print art!
         print(story_texts["epilogue"]["flee"])
+        print("")
         print(art_assets["misc"]["pathetic"])
+        combat_track.terminate()
         break
     elif finale == "fight":
         print(story_texts["bbeg"]["cta"])
@@ -240,6 +244,7 @@ while player_stats["is_alive"]:
                     player_stats["hp"] = min(100, player_stats["hp"]+50)
                     print(f"You regain your strength! Your HP is now {player_stats['hp']}")
                     player_stats["inventory"].remove("healing_potion")
+                    healed = True
                 else:
                     print("Alas, Sir Knight, you've run out of healing potions!")
                     continue
@@ -248,7 +253,9 @@ while player_stats["is_alive"]:
                     print("Your sack is empty, Sir Knight!")
                     continue
                 else:
-                    print(f"You still carry {', '.join(player_stats['inventory'])}")
+                    print(art_assets["fight"]["sack"])
+                    print("")
+                    print(f"You still carry {', '.join(item.replace('_', ' ').capitalize() for item in player_stats['inventory'])}")
                     continue
             elif choiceF in ['a', 'attack']:
                 print(art_assets["fight"]["hero_attacks"])
@@ -259,6 +266,7 @@ while player_stats["is_alive"]:
                     bbeg_stats["hp"]-=dmg
             # 6.1.1. Check boss stats
                     if bbeg_stats["hp"] <= 0:
+                        print(art_assets["misc"]["final_blow"])
                         print(story_texts["bbeg"]["bbeg_death"])
                         bbeg_stats["is_alive"] = False
                         combat_track.terminate()
@@ -266,7 +274,10 @@ while player_stats["is_alive"]:
                 elif hero_strike > player_stats["acc"]:
                     print(story_texts["bbeg"]["hero_miss"])
             print("-------------------------------------------------------------------")
+            # freeze text
+            useless_input = input("Press any key to continue >>> ")
             # 6.2.1. Boss round
+            print(art_assets["fight"]["bbeg_attacks"])
             print(story_texts["bbeg"]["bbeg_action"])
             special_att_chance = random.randint(1, 5)
             bbeg_strike = random.randint(1, 101)
@@ -291,19 +302,29 @@ while player_stats["is_alive"]:
                 player_stats["is_alive"] = False
                 print(wounds["death"])
                 combat_track.terminate()
-                #print art
+                go_track = subprocess.Popen(['powershell', music["go"]])
+                print(art_assets["fight"]["hero_dies"])
                 break
-            elif hp_turn_start > player_stats["hp"]:
+            elif hp_turn_start > player_stats["hp"] or healed:
+                healed = False
                 print(story_texts["bbeg"]["bbeg_hit"])
                 print(f"You have {player_stats['hp']} HP left! Steel yourself!")
 
             round_no+=1
 
+    # freeze text
+    useless_input = input("Press any key to continue >>> ")
     # 7. Epilogue
     if player_stats["is_alive"]:
         print(story_texts["epilogue"]["victory"])
-        #print art
+        victory_track = subprocess.Popen(['powershell', music["victory"]])
+        print(art_assets["epilogue"]["victory"])
+        # freeze text
+        useless_input = input("Press any key to complete your journey! >>> ")
+        victory_track.terminate()
     elif not player_stats["is_alive"]:
         print(story_texts["epilogue"]["defeat"])
-        #print art
+        defeat_track = subprocess.Popen(['powershell', music["go"]])
+        print(art_assets["epilogue"]["defeat"])
+
     break

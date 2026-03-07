@@ -48,4 +48,13 @@ The whole UI is basically fueled by a Python dictionary. I didn't want to waste 
 * A hero enters a cave to resque the princess (classic) but perils await him at all steps. Will he be met with a gruesome fate or live on to tell the tale?
 * Decided to have a logic file and an art&text file to keep things DRY and clean
 * Set up a TODO list for implementation clarity
-* Decided to implement keywords that can be used throughout the story
+* Decided to implement keywords that can be used throughout the story - reduced the scope to "during the fight"
+* Extended the scope of the story altogether - made it WAAAAAAAAY too complex compared to the course example
+* Added "branching" options, an instakill option, an abandon quest option, HP and consumables
+* Added a trap and a locked door hiding a treasure
+* Added a B0$$ (chance to hit/miss, critical strikes, boss "phases") fight and covered retreat/defeat/victory
+* Added ASCII art for key moments
+* Added very basic music via powershell with parallel processing; music changes based on context (4 tracks in total)
+* BBEG and player stats handled in dictionaries
+* Game assets handled in a separate folder as dictionaries
+* Sanitized user inputs in order to avoid user hassle/errors 
