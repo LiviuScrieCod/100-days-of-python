@@ -47,7 +47,9 @@ while player_stats["is_alive"]:
     # TODO:
     # 1. Entering the cave
     print(story_texts["first_encounter"]["cave_entrance"])
+    print("-------------------------------------------------------------------")
     print(story_texts["first_encounter"]["door"])
+    print(art_assets["first_encounter"]["old_door"])
 
     # 2. First encounter
     while True:
@@ -61,17 +63,17 @@ while player_stats["is_alive"]:
                 choice2 = input(prompts["first_encounter"]["explore"]).lower().strip()
                 if choice2 == "center":
                     # 2.1. Inventory logic
+                    print(art_assets["first_encounter"]["altar"])
                     print(story_texts["first_encounter"]["healing_potion"])
                     player_stats["inventory"].append("healing_potion")
-                    # print(player_stats["inventory"])
                     print(story_texts["first_encounter"]["exit_chamber"])
                     break
                 elif choice2 == 'corner':
+                    print(art_assets["first_encounter"]["junk"])
                     print(story_texts["first_encounter"]["rat_bite"])
                     player_stats["hp"] -= random.randint(1, 5)
                     print(f'{" ".join(wounds["rat"])}. Your HP is now {player_stats["hp"]}')
                     print(story_texts["first_encounter"]["exit_chamber"])
-                    # print(player_stats["hp"])
                     break
                 elif choice2 == 'leave room':
                     print(story_texts["first_encounter"]["exit_chamber"])
@@ -87,12 +89,14 @@ while player_stats["is_alive"]:
 
     # 3. Second encounter
     print(story_texts["second_encounter"]["tunnel_split"])
+    print(art_assets["second_encounter"]["tunnel_split"])
     while True:
         choice3 = input(prompts["second_encounter"]["two_tunnels"]).lower().strip()
         # 3.1. 'Go left' outcome
         if choice3 == "left":
             print(story_texts["second_encounter"]["tunnel_split_left"])
-            # add clear, add GO art
+            print("")
+            print(art_assets["misc"]["go"])
             player_stats["is_alive"] = False
             break
         # 3.2. 'Go right' account
@@ -102,9 +106,10 @@ while player_stats["is_alive"]:
             print("Focus brave knight, time is of the essence!")
             continue
         break
-    print("-------------------------------------------------------------------")
+
     if not player_stats["is_alive"]:
         break
+    print("-------------------------------------------------------------------")
 
     # 4. Third encounter
     print(story_texts["third_encounter"]["trap"])
