@@ -46,4 +46,6 @@ The whole UI is basically fueled by a Python dictionary. I didn't want to waste 
 * New project, new branch
 * I'll be creating a text adventure (and ascii art) game
 * A hero enters a cave to resque the princess (classic) but perils await him at all steps. Will he be met with a gruesome fate or live on to tell the tale?
-* 
+* Decided to have a logic file and an art&text file to keep things DRY and clean
+* Set up a TODO list for implementation clarity
+* Decided to implement keywords that can be used throughout the story

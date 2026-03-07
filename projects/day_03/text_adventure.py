@@ -1,5 +1,6 @@
 import random
 from game_data import story_texts
+from game_data import prompts
 from game_data import art_assets
 
 
