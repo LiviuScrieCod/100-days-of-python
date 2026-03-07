@@ -17,4 +17,10 @@ The whole UI is basically fueled by a Python dictionary. I didn't want to waste 
 * Built the backbone of the hub
 * Wrestled pyscript.json to get things displayed using localhost
 * Managed to get 100 elements rendered on the page, proper info displayed 
+* Created a very basic css styling, just to get things looking ok-ish, proper design on the way.
 
+### Day 2: First crack at the Python projects
+* Band Name Generator - decided on a UI and solution for code execution on the page (literally)
+
+### Day 3: Band Name Generator
+* Implemented a default html/css for the first and future projects (old crt terminal vibe)
