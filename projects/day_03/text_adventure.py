@@ -23,6 +23,7 @@ while player_stats["is_alive"]:
     # TODO:
     # 1. Entering the cave
     print(story_texts["first_encounter"]["cave_entrance"])
+    print(story_texts["first_encounter"]["door"])
     # 2. First encounter
     # 2.1. Inventory logic
     while True:
@@ -32,27 +33,48 @@ while player_stats["is_alive"]:
             break
         elif choice == 'enter':
             print(story_texts["first_encounter"]["chamber"])
-            choice2 = input(prompts["first_encounter"]["explore"]).lower().strip()
-            if choice2 == "center":
-                print(story_texts["first_encounter"]["healing_potion"])
-                player_stats["inventory"].append("healing_potion")
-                print(story_texts["first_encounter"]["exit_chamber"])
-                break
-            elif choice2 == 'corner':
-                continue
-            elif choice2 == 'leave room':
-                print(story_texts["first_encounter"]["exit_chamber"])
-                break
-            else:
-                print("Focus brave knight, time is of the essence!")
+            while True:
+                choice2 = input(prompts["first_encounter"]["explore"]).lower().strip()
+                if choice2 == "center":
+                    print(story_texts["first_encounter"]["healing_potion"])
+                    player_stats["inventory"].append("healing_potion")
+                    # print(player_stats["inventory"])
+                    print(story_texts["first_encounter"]["exit_chamber"])
+                    break
+                elif choice2 == 'corner':
+                    print(story_texts["first_encounter"]["rat_bite"])
+                    player_stats["hp"] -= random.randint(1, 5)
+                    # print(player_stats["hp"])
+                    break
+                elif choice2 == 'leave room':
+                    print(story_texts["first_encounter"]["exit_chamber"])
+                    break
+                else:
+                    print("Focus brave knight, time is of the essence!")
 
         else:
             print("Focus brave knight, time is of the essence!")
-
-
+            continue
+        break
 
     # 3. Noise further ahead in the tunnel
+    print(story_texts["second_encounter"]["tunnel_split"])
     # 3.1. Go left outcome
+    while True:
+        choice3 = input(prompts["second_encounter"]["two_tunnels"]).lower().strip()
+        if choice3 == "left":
+            print(story_texts["second_encounter"]["tunnel_split_left"])
+            player_stats["is_alive"] = False
+            player_stats["hp"] = 100
+            break
+        elif choice3 == "right":
+            print(story_texts["second_encounter"]["tunnel_split_right"])
+        else:
+            print("Focus brave knight, time is of the essence!")
+            continue
+        break
+
+
     # 3.2. Go right account
     # 4.2. Trap encounter
     # 5.2. Triple choice encounter

@@ -1,6 +1,6 @@
 story_texts = {
     "adventure_start": "\nWelcome, brave knight! Are you ready to face the unknown and resque the fair maiden? Glory awaits for a noble soul to step forth! (type start to begin) ",
-    "first encounter": {
+    "first_encounter": {
         "cave_entrance": (
             "\nThe air grows heavy, smelling of damp earth and ancient decay. "
             "The cave mouth swallows the daylight, leaving you with only the sound "
@@ -47,24 +47,26 @@ story_texts = {
             "in the deepening silence of the corridor."
         )
     },
-    "tunnel_split": (
-        "The tunnel widens into a jagged limestone throat. To the 'LEFT', the air is freezing, "
-        "and that rhythmic scraping sound has turned into a heavy, wet thud. To the 'RIGHT', "
-        "the passage is narrow and reeks of old bone, but it seems to lead upward. "
-    ),
-    "tunnel_split_left": (
-        "You venture left, drawn by the sound. As you step into the darkness, the noise stops. "
-        "A cold, oppressive shadow detaches itself from the ceiling above. You look up just "
-        "in time to see a mass of obsidian claws descending. Everything goes black. "
-        "You've found the source of the noise... and it was hungry."
-        "GAME OVER!"
-    ),
-    "tunnel_split_right": (
-        "You scramble to the right, squeezing through the tight passage. Just as you move "
-        "out of sight, a blood-curdling shriek echoes behind you, "
-        "followed by the sickening sound of stone being shredded. Whatever was lurking "
-        "back there has found its dinner. You keep moving, heart hammering against your ribs."
-    ),
+    "second_encounter": {
+        "tunnel_split": (
+                "The tunnel widens into a jagged limestone throat. To the 'LEFT', the air is freezing, "
+                "and that rhythmic scraping sound has turned into a heavy, wet thud. To the 'RIGHT', "
+                "the passage is narrow and reeks of old bone, but it seems to lead upward. "
+            ),
+        "tunnel_split_left": (
+            "You venture left, drawn by the sound. As you step into the darkness, the noise stops. "
+            "A cold, oppressive shadow detaches itself from the ceiling above. You look up just "
+            "in time to see a mass of obsidian claws descending. Everything goes black. "
+            "You've found the source of the noise... and it was hungry."
+            "GAME OVER!"
+        ),
+        "tunnel_split_right": (
+            "You scramble to the right, squeezing through the tight passage. Just as you move "
+            "out of sight, a blood-curdling shriek echoes behind you, "
+            "followed by the sickening sound of stone being shredded. Whatever was lurking "
+            "back there has found its dinner. You keep moving, heart hammering against your ribs."
+        ),
+    },
     "trap": (
         "As you step forward, a heavy 'CLICK' echoes through the narrow tunnel. "
         "The stone slab beneath your boot sinks slightly, and everything goes silent. "
@@ -154,10 +156,13 @@ story_texts = {
 prompts = {
     "first_encounter": {
         "door": "\nDo you 'enter' the chamber or 'ignore' it? >>>  ",
-        "explore": "\n Where do you go, Sir Knight: 'center', 'corner' or 'leave room'? >>> "
+        "explore": "\nWhere do you go, Sir Knight: 'center', 'corner' or 'leave room'? >>> "
+    },
+    "second_encounter": {
+        "two_tunnels": "\nFollow the sound to the 'left' or continue on the 'right' gallery? >>>  ",
     },
 
-    "two_tunnels": "\nFollow the sound to the 'left' or continue on the 'right' gallery? >>>  ",
+
     "tunnel_split": "\nWill you go 'left' or 'right'?",
     "trap": "\nDo you 'sprint' forward or 'roll' to the side?",
     "hub": "\nDo you go 'left', 'right' or 'ahead'?",
