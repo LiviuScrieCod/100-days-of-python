@@ -92,24 +92,37 @@ story_texts = {
         ),
     },
     "fourth_encounter": {
+        "hub": (
+                "As you walk you end up in a grand, circular hall. The air is stagnant and heavy with the scent of "
+                "sulfur. Three paths lie before you, each whispering a different promise of fate."
+                "To the 'LEFT', a heavy iron-bound door stands slightly ajar, a faint golden light "
+                "flickering through the crack. "
+                "To the 'RIGHT', a massive stone door is firmly locked; its surface is etched with "
+                "faded runes of warding. "
+                "Straight 'AHEAD', an ominous hallway stretches into total darkness, echoing with "
+                "a low, guttural vibration that makes your teeth rattle."
+            ),
+            "hub_left_door": (
+                "You push the door open and freeze. In the center of the room, a slumped "
+                "figure sits on a rickety wooden chair. It's a Goblin guard, snoring loudly "
+                "with his head tilted back. Hanging from his thick leather belt is a heavy "
+                "iron key ring. The keys glint in the candlelight, just inches from his hand."
+            ),
+        "left_foor": {
+
+        },
+        "ahead": {
+
+        },
+        "right_door": {
+
+        },
 
     },
-    "hub": (
-        "As you walk you end up in a grand, circular hall. The air is stagnant and heavy with the scent of "
-        "sulfur. Three paths lie before you, each whispering a different promise of fate."
-        "To the 'LEFT', a heavy iron-bound door stands slightly ajar, a faint golden light "
-        "flickering through the crack. "
-        "To the 'RIGHT', a massive stone door is firmly locked; its surface is etched with "
-        "faded runes of warding. "
-        "Straight 'AHEAD', an ominous hallway stretches into total darkness, echoing with "
-        "a low, guttural vibration that makes your teeth rattle."
-    ),
-    "hub_left_door": (
-        "You push the door open and freeze. In the center of the room, a slumped "
-        "figure sits on a rickety wooden chair. It's a Goblin guard, snoring loudly "
-        "with his head tilted back. Hanging from his thick leather belt is a heavy "
-        "iron key ring. The keys glint in the candlelight, just inches from his hand."
-    ),
+    "bbeg":{
+
+    },
+
     "hub_right_door_no key": (
         "You rattle the handle, but the stone door doesn't budge. You'll need a way "
         "to bypass this lock if you want to see what's hidden behind the runes."
@@ -172,7 +185,7 @@ prompts = {
         "two_tunnels": "\nFollow the sound to the 'left' or continue on the 'right' gallery? >>>  ",
     },
     "third_encounter": {
-        "trap": "\nDo you 'sprint' forward or 'roll' to the side?",
+        "trap": "\nDo you 'sprint' forward or 'roll' to the side? >>>",
     },
     "hub": "\nDo you go 'left', 'right' or 'ahead'?",
     "sleeping_goblin": "\nDo you 'steal' the keys or 'leave' before he wakes up?",
@@ -180,6 +193,22 @@ prompts = {
     "invalid_input": "\nInvalid command. Please try again: >>>",
     "continue": "\nPress Enter to continue... ",
     "use_key": "\nYou have the Skeleton Key. Use it to unlock the door? ('yes'/'no') >>> "
+}
+
+wounds = {
+    "rat": (
+        "\nThe puncture marks on your hand throb with a dull, sickening heat.",
+        "You feel a bit slower, the poison of the cave stinging your veins."
+    ),
+    "trap": (
+        "\nYou gasp as the arrows find their mark, leaving jagged tears in your armor.",
+        "Blood seeps through the fabric, warm and alarmingly persistent."
+    ),
+    "death": (
+        "\nYour strength fails as the world narrow to a cold, dark point. "
+        "The echoes of the dungeon fade, leaving only the silence of a "
+        "grave that will never be marked. Your journey ends here."
+    ),
 }
 
 art_assets = {

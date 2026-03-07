@@ -1,8 +1,8 @@
 import random
 from game_data import story_texts
 from game_data import prompts
+from game_data import wounds
 from game_data import art_assets
-
 
 player_stats = {
     "hp":100,
@@ -44,6 +44,8 @@ while player_stats["is_alive"]:
                 elif choice2 == 'corner':
                     print(story_texts["first_encounter"]["rat_bite"])
                     player_stats["hp"] -= random.randint(1, 5)
+                    print(f'{" ".join(wounds["rat"])}. Your HP is now {player_stats["hp"]}')
+                    print(story_texts["first_encounter"]["exit_chamber"])
                     # print(player_stats["hp"])
                     break
                 elif choice2 == 'leave room':
@@ -64,6 +66,7 @@ while player_stats["is_alive"]:
         # 3.1. 'Go left' outcome
         if choice3 == "left":
             print(story_texts["second_encounter"]["tunnel_split_left"])
+            # add clear, add GO art
             player_stats["is_alive"] = False
             break
         # 3.2. 'Go right' account
@@ -92,16 +95,27 @@ while player_stats["is_alive"]:
             player_stats["hp"] -= 30
             if player_stats["hp"] <= 0:
                 player_stats["is_alive"] = False
+                print(wounds["death"])
+                # add clear, add GO art
             break
     if not player_stats["is_alive"]:
         break
     print("-------------------------------------------------------------------")
 
+    # 5. Encounter Hub
+    print(story_texts["fourth_encounter"]["hub"])
+    while True:
 
-    # 5.2. Triple choice encounter
-    # 5.2.1. Door on left encounter
-    # 5.2.2. Door on right encounter
-    # 5.2.3. Forward towards the BBEG
+    # 5.1. Left door
+        while True:
+            break
+    # 5.2. Right door
+        while True:
+            break
+    # 5.3. BBEG tunnel
+        while True:
+            break
+
     # 5.2.3.1. Fight the BBEG
     # 5.2.3.2. Epilogue
     # implement global keywords for retreat/game over and healing
