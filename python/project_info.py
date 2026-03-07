@@ -1,14 +1,14 @@
 projects_data = {
     1: {
         "title": "Band Name Generator",
-        "link": "#",
+        "link": "project.html",
     },
     2: {
         "title": "Opinionated Tip Calculator",
-        "link": "#",
+        "link": "sdiasbd",
     },
     3: {
         "title": "",
-        "link": "#",
+        "link": "ssssss",
     },
 }

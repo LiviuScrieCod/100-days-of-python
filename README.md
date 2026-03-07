@@ -28,3 +28,7 @@ The whole UI is basically fueled by a Python dictionary. I didn't want to waste 
 * Added weight so that users get mostly 2-4 questions in order to avoid lengthy names
 * Ability to check all names generated during a single session
 * Added ASCII art for design
+* Realize I bit off more than I could chew and decided to change my strategy: switch to individual projects while I figure out how to make a proper mvc-ish system
+
+### Day 4: Still at Band Name Generator project
+* 
