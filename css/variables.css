@@ -1,7 +1,7 @@
 :root {
   /* COLORS */
   --black: #000;
-  --white: #fff;
+  --white: #fbf5df;
   --blue58: #586ba4;
   --yellowfc: #fcdc57;
   --pinkfc: #fcb0b3;
@@ -10,4 +10,7 @@
   /* FONTS */
   --font-sans: "Nunito", sans-serif;
   --font-serif: "Lora", serif;
+
+  /* VARIABLES */
+  --step: 5rem;
 }
