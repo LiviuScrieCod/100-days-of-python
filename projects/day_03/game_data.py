@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 story_texts = {
     "adventure_start": "\nWelcome, brave knight! Are you ready to face the unknown and resque the fair maiden? Glory awaits for a noble soul to step forth! (type start to begin) ",
     "first_encounter": {
@@ -49,19 +51,19 @@ story_texts = {
     },
     "second_encounter": {
         "tunnel_split": (
-                "The tunnel widens into a jagged limestone throat. To the 'LEFT', the air is freezing, "
+                "\nThe tunnel widens into a jagged limestone throat. To the 'LEFT', the air is freezing, "
                 "and that rhythmic scraping sound has turned into a heavy, wet thud. To the 'RIGHT', "
                 "the passage is narrow and reeks of old bone, but it seems to lead upward. "
             ),
         "tunnel_split_left": (
-            "You venture left, drawn by the sound. As you step into the darkness, the noise stops. "
+            "\nYou venture left, drawn by the sound. As you step into the darkness, the noise stops. "
             "A cold, oppressive shadow detaches itself from the ceiling above. You look up just "
             "in time to see a mass of obsidian claws descending. Everything goes black. "
             "You've found the source of the noise... and it was hungry."
             "GAME OVER!"
         ),
         "tunnel_split_right": (
-            "You scramble to the right, squeezing through the tight passage. Just as you move "
+            "\nYou scramble to the right, squeezing through the tight passage. Just as you move "
             "out of sight, a blood-curdling shriek echoes behind you, "
             "followed by the sickening sound of stone being shredded. Whatever was lurking "
             "back there has found its dinner. You keep moving, heart hammering against your ribs."
@@ -69,7 +71,7 @@ story_texts = {
     },
     "third_encounter": {
         "trap": (
-            "As you step forward, a heavy **CLICK** echoes through the narrow tunnel. "
+            "\nAs you step forward, a heavy **CLICK** echoes through the narrow tunnel. "
             "The stone slab beneath your boot sinks slightly, and everything goes silent. "
             "You feel a sudden rush of air from the walls. You have a split second to react! "
         ),
@@ -79,13 +81,13 @@ story_texts = {
             "indecision, you are forced to react purely on instinct!"
         ),
         "trap_success": (
-            "Your reflexes save your life! You move with a burst of speed just as a "
+            "\nYour reflexes save your life! You move with a burst of speed just as a "
             "deadly spray of stone shards whistles through the air where you stood "
             "moments ago. You land hard on the dusty floor, gasping, but untouched. "
             "The trap is spent. You pick yourself up and keep going."
         ),
         "trap_failure": (
-            "You stumble for a fraction of a second,"
+            "\nYou stumble for a fraction of a second,"
             "just long enough for the trap to find its mark. "
             "Sharp stone projectiles graze your side, tearing through your armor and "
             "leaving a deep, bloody gash. You lose 30 HP!"
@@ -115,7 +117,7 @@ story_texts = {
                 "scratches his nose in his sleep but doesn't stir. You've got the Skeleton Key!"
             ),
             "stealth_failure": (
-                "As you reach for the belt, your armor clinks against the chair. The Goblin's "
+                "\nAs you reach for the belt, your armor clinks against the chair. The Goblin's "
                 "eyes snap open, bloodshot and wide. He lets out a shrill alarm whistle and "
                 "swipes at you with a jagged dagger! You barely dodge, but you have to flee "
                 "empty-handed. No keys for you this time!"
@@ -123,7 +125,7 @@ story_texts = {
         },
         "ahead": {
             "tunnel": (
-                "You make your way through to the central hallway. The temperature drops "
+                "\nYou make your way through to the central hallway. The temperature drops "
                 "instantly. Every instinct tells you to run, but glory lies just a few "
                 "more steps ahead, where the shadows seem to be moving on their own. " 
                 "There is no turning back now."
@@ -183,6 +185,7 @@ story_texts = {
             "lifts from the room. You untie the silken bonds, and the Princess looks "
             "at you with eyes that have seen the abyss and returned. You have not "
             "just survived the Dungeon of Doom; you have conquered its heart!"
+            "\nYou return to the castle where glory awaits you!"
         ),
         "defeat": (
             "\nThe world narrows down to the cold, unforgiving stone of the dungeon floor. "
@@ -210,7 +213,7 @@ prompts = {
         "two_tunnels": "\nFollow the sound to the 'left' or continue on the 'right' gallery? >>>  ",
     },
     "third_encounter": {
-        "trap": "\nDo you 'sprint' forward or 'roll' to the side? >>>",
+        "trap": "\nDo you 'sprint' forward or 'roll' to the side? >>> ",
     },
     "hub_encounter": {
         "hub": "\nDo you go 'left', 'right' or 'ahead'? >>> ",
@@ -219,7 +222,7 @@ prompts = {
         },
     },
     "bbeg": {
-        "final_decision": "\nWill you 'fight' or 'flee'?",
+        "final_decision": "\nWill you 'fight' or 'flee'? >>> ",
         "hero_action": (
             "\nWhat will it be, Sir Knight? "
             "[A]ttack, [h]eal or [i]nventory status? >>> "
@@ -314,7 +317,7 @@ art_assets = {
                                                    -----'''
     },
     "third_encounter": {
-        "surprize": r'''⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+        "surprise": r'''⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣴⣶⣶⡒⠤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠳⠶⣶⡶⠶⣒⣀⣭⣤⣽⣼⠟⣻⠟⠉⠐⠒⠠⠀⠰⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠺⢿⣿⣿⠃⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣶⣿⡿⠟⣿⣿⡟⡁⠐⠁⣠⣶⣿⣿⣿⣶⣤⣬⠁⢠⣤⣤⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣿⡷⠀⣤
@@ -420,7 +423,156 @@ art_assets = {
           +#%#%%##%-            =#+-=+*#-   
                                 *=*%*#*:    '''
     },
-    "epilogue": {},
+    "fight": {
+        "hero_attacks": r'''      _,.
+    ,` -.)
+   ( _/-\\-._
+  /,|`--._,-^|            ,
+  \_| |`-._/||          ,'|
+    |  `-, / |         /  /
+    |     || |        /  /
+     `r-._||/   __   /  /
+ __,-<_     )`-/  `./  /
+'  \   `---'   \   /  /
+    |           |./  /
+    /           //  /
+\_/' \         |/  /
+ |    |   _,^-'/  /
+ |    , ``  (\/  /_
+  \,.->._    \X-=/^
+  (  /   `-._//^`
+   `Y-.____(__}
+    |     {__)
+          ()
+''',
+        "hero_dies": r'''                     ______
+                  .-"      "-.
+                 /            \
+                |              |
+                |,  .-.  .-.  ,|
+                | )(__/  \__)( |
+                |/     /\     \|
+      (@_       (_     ^^     _)
+ _     ) \_______\__|IIIIII|__/__________________________
+(_)@8@8{}<________|-\IIIIII/-|___________________________>
+       )_/        \          /
+      (@           `--------` jgs
+''',
+        "bbeg_attacks": r'''              ,
+          -===>)))o
+  /\      .   '| \
+  ||     /(__  /~ )
+|_/\_|  ,~~  ~~-._|
+ \()/  /~   /     \
+  ||   >/-/~       |
+  ||   " (   .     |
+  ||     (=-/      |
+ (||\___/' /\_,  __(
+ `--...__./  |-\\\\\\
+  ||        /~~\||||;
+  ||       /   |///|
+  ||      /   /\   |
+  ||     |__/'  \__\
+  ||     ((((   (((((
+  ||     )))))   )))))
+  ||     (((((   (((((
+  ||      | /     | /
+  ||  __./' \_ _./' \_ TX
+  \/ ////~~~\_)/~~~~\_)
+''',
+        "bbeg_dead": r'''
+             *
+          *
+        *           ..i'             q.
+       *         .poj;                \*.
+      .         oKPO                   THk
+     .k        {HHk`                    THH,
+     dH,       ;YJH.                     YHHk
+    {HHk       :lHHk                     jHHH}
+     THHk      `NJHH,                   .HHHl'
+      THHk,     lHHHHk                 jHHHHP
+       THHHi:,  `GHHHHH,.            .'HHHHH
+        `THHHHHHi\WHHHHHkoo....ooooojHHHHHHF
+          `*THHHH`THHHHHHHHHHHHHHHHHHHHHHHHl
+             `*THHHYHHHHHHHHHHHHHHHHHHHHHHHI
+                `*THHYHHHHHHHHHHHHHHHHHHHHHH}
+                  `*THHHHHHHHHHHHHHHHHHHHHH}
+                     `THHHHHHHHHHHHHHHHHHHP
+                       `THHHHHHHHHHHHHHHHHH|  Snafu
+''',
+    },
+    "epilogue": {
+        "victory": r'''                                o
+                            .-'"|
+                            |-'"|
+                                |   _.-'`.
+                               _|-"'_.-'|.`.
+                              |:^.-'_.-'`.;.`.
+                              |::.'.   ,-'_.-'|
+                              |:::+.'-'.-: . J
+           __.            .d88|:+:::+-' _-, .|
+      _.--'_..`.    .d88888888|:||]:|, | J].J8b.
+   +:" ,--'_.|`.`.d88888888888|-' J:| .| J|_|888b.
+   |:\ \-'_.--'_.-+888888888+'  _-K:F.+:    `88888bo.
+    L:\ +'_.--'. .|88888+"'  _.'.J:J.J:::.    +8888888b.
+    |:::+'. ._. . |8+"'  _.-', . |:| |::::+    `+8888888._-'.
+  .d8J::L. ./ \\ .J' _.-: . . . ,|:|.|::::::.,   `+888+'^.-|.`.
+ d888|::| . F  FL J-'. . , . , . F:F F::::::/`/  _.-"_.-'_.+.`.`.
+d88888L::L .|  \L. L. . , . . . J:J J::::::/`/::|. +'_.-'    `_+ `;
+888888J::|. K    \.L . , . . _:-+:|.':::::/`/:::F::.`.     .-'_.-:J
+8888888|::L.L\    \|. . ._:-'     '   `::/`/:::J:::::.`..-'.-'. . |
+8888888PL:| |:\    `._:-'               /`/::::|:|| \::..-'. , . J.b
+8888888 |::L L:`.    \     _.-+.       /`/`::::L+`'  |::| . . , .F88b
+8888888  L:|.|:::\   _:.--'_.-|.`.    '`/   >-'     .J:J . , . .|8888b
+8888888  |::L.L:::+:" _.--'_.-'.`.`.    _.-'    :"|':|:|. . . .JY88888b
+8888888   L:| |::::|\ \_.-'     `.`.`.-'    :"|-'. .J:J. . , . F Y88888b
+Y888888    \:L L:::L:\ `.      _.-'_.-+ :"|-: . , . |:| , . , |  Y88888b
+`888888b    \|.|:::|:::. \ _.-'_.-: . |-', . . , . J:J . . . J    Y88888b
+ Y888888     +'\:::J::::\ '_.-'. . . .F . .,-T`\. .|:|. , ,-'     )888888
+  Y88888b.      \:::L::::+. . , . . .J . ,/  |:J .J:J. ,-'       .d888888
+   Y888888b      \::|::::| . . . , . |. . F  ':|,-'+|-'        .d88888888
+    Y888888b      \:J::::|. . . . . .F , J    -:             .od88888888P
+     Y888888b      \:L:::| . , . , .J . .| .' ` \d8888888888888888888888P
+      Y888888b      \|:::|. , . . , |. ,-'`.  `\ `+88888888888888888888P
+       Y888888b.     J:::| . . , . .F-'     \\ ` \ \88888888888888888P'
+        Y8888888b     L::|, . . , .J       d8+.`\  \`+8888888888888P'
+         Y8888888b    |::| . , . ._+      d8888\  ` .'  `Y888888P'
+         `88888888b   J::|. . ._-'     .od888888\.-'
+          Y88888888b   \:| ._-'     d888888888P'              ,==. o
+          `888888888b   \|-'       d88888888'                 |/ "'/L
+           `Y88888888b            d8888888P'                 ,-_) '<_
+             Y88888888bo.      .od88888888   hs               /^-._  \=_
+             `8888888888888888888888888888                    `   (-'/ ~~
+              Y88888888888888888888888888P                    a:f  | \
+               `Y8888888888888888888888P'                          `  `
+                 `Y8888888888888P'
+                      `Y88888P' 
+''',
+        "defeat": r'''        _
+       (_)
+       |=|
+       |=|
+   /|__|_|__|\
+  (    ( )    )
+   \|\/\"/\/|/
+     |  Y  |
+     |  |  |
+     |  |  |
+    _|  |  |
+ __/ |  |  |\
+/  \ |  |  |  \
+   __|  |  |   |
+/\/  |  |  |   |\
+ <   +\ |  |\ />  \
+  >   + \  | LJ    |
+        + \|+  \  < \
+  (O)      +    |    )
+   |             \  /\
+ ( | )   (o)      \/  )
+_\\|//__( | )______)_/
+        \\|//
+'''
+    },
     "misc": {
         "go": r''' $$$$$$\                                                                                  $$\ 
 $$  __$$\                                                                                 $$ |
@@ -432,6 +584,43 @@ $$ |  $$ |$$  __$$ |$$ | $$ | $$ |$$   ____|      $$ |  $$ | \$$$  /  $$   ____|
  \______/  \_______|\__| \__| \__| \_______|       \______/    \_/     \_______|\__|      \__|
                                                                                               
                                                                                               
-                                                                                              '''
+                                                                                              ''',
+        "pathetic": r'''$$$$$$$\   $$$$$$\ $$$$$$$$\ $$\   $$\ $$$$$$$$\ $$$$$$$$\ $$$$$$\  $$$$$$\  $$\ 
+$$  __$$\ $$  __$$\\__$$  __|$$ |  $$ |$$  _____|\__$$  __|\_$$  _|$$  __$$\ $$ |
+$$ |  $$ |$$ /  $$ |  $$ |   $$ |  $$ |$$ |         $$ |     $$ |  $$ /  \__|$$ |
+$$$$$$$  |$$$$$$$$ |  $$ |   $$$$$$$$ |$$$$$\       $$ |     $$ |  $$ |      $$ |
+$$  ____/ $$  __$$ |  $$ |   $$  __$$ |$$  __|      $$ |     $$ |  $$ |      \__|
+$$ |      $$ |  $$ |  $$ |   $$ |  $$ |$$ |         $$ |     $$ |  $$ |  $$\     
+$$ |      $$ |  $$ |  $$ |   $$ |  $$ |$$$$$$$$\    $$ |   $$$$$$\ \$$$$$$  |$$\ 
+\__|      \__|  \__|  \__|   \__|  \__|\________|   \__|   \______| \______/ \__|''',
+        "final_blow": r'''              .-.
+              | |____________________________________________________
+ _ _ _ _ _ _ _| |                                                  .'`.
+|_|_|_|_|_|_|_| |-mbfh-------------------------------------------.'****>
+`.            | |_______________________________________________.'***.'
+  `.        .'| |                                               `**'
+    `-.___.'  `-'                                              .'*`.
+                                                               `._.' .
+                                                               .   .'*`.
+                                                             .'*`. `._.'
+''',
+        "caduceus": r''' _____  _  _____
+(___  \( )/  ___)
+  (___ | | ___)
+     /"| ("\
+    ( (| |) )
+     `.!' .'
+      / .'\
+      \|/ /
+       /.<
+      (| |)
+       | '
+       `-'   VK
+'''
     }
+}
+
+music = {
+    "background_music": '$count=0; while($true){ [console]::beep(60, 100); Start-Sleep -m 100; [console]::beep(55, 250); $count++; if($count -eq 7){ Start-Sleep -m 1000; [console]::beep(110, 1000); [console]::beep(165, 1000); [console]::beep(130, 1000); [console]::beep(146, 1000); $count = 0; } Start-Sleep -m 1000 }',
+    "combat_music": 'while($true){for($i=0;$i -lt 7;$i++){[console]::beep(440,143);Start-Sleep -m 30;[console]::beep(494,143);Start-Sleep -m 30;[console]::beep(523,143);Start-Sleep -m 30};[console]::beep(523,143);Start-Sleep -m 30;[console]::beep(494,143);Start-Sleep -m 30;[console]::beep(440,143);Start-Sleep -m 30;[console]::beep(392,143);Start-Sleep -m 30}'
 }
