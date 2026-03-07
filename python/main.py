@@ -11,7 +11,7 @@ def populate_project_els(nr):
             project_link = projects_data[_]["link"]
         else:
             project_title = "Work in progress"
-            # project_link = "#"
+            project_link = "#"
 
         li_element = document.createElement("li")
         li_element.className = "day"
