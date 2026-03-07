@@ -7,7 +7,31 @@ from game_data import art_assets
 player_stats = {
     "hp":100,
     "inventory": [],
-    "is_alive": False
+    "is_alive": False,
+    "acc": 70,
+    "dmg": (5,10)
+}
+
+round_no = 1
+
+bbeg_stats = {
+    "hp": 100,
+    "acc": 40,
+    "special_att": 2,
+    "dmg": {
+        "regular": (8,12),
+        "special": {
+            "smash": {
+                "acc": 50,
+                "dmg": 25
+            },
+            "slash": {
+                "acc": 65,
+                "dmg": 35
+            },
+        }
+    },
+    "is_alive": True,
 }
 
 print(art_assets["opening_screen_art"])
@@ -24,6 +48,7 @@ while player_stats["is_alive"]:
     # 1. Entering the cave
     print(story_texts["first_encounter"]["cave_entrance"])
     print(story_texts["first_encounter"]["door"])
+
     # 2. First encounter
     while True:
         choice = input(prompts["first_encounter"]["door"]).lower().strip()
@@ -59,6 +84,7 @@ while player_stats["is_alive"]:
             continue
         break
     print("-------------------------------------------------------------------")
+
     # 3. Second encounter
     print(story_texts["second_encounter"]["tunnel_split"])
     while True:
@@ -145,12 +171,100 @@ while player_stats["is_alive"]:
 
     # 5.3. BBEG tunnel
         elif choice5 == "ahead":
+            print("-------------------------------------------------------------------")
             print(story_texts["hub_encounter"]["ahead"]["tunnel"])
             break
 
         elif choice5 not in ["left", "right", "ahead"]:
             print("Focus brave knight, time is of the essence!")
 
-    # 5.2.3.1. Fight the BBEG
-    # 5.2.3.2. Epilogue
-    # implement global keywords for retreat/game over and healing
+    # 6. BBEG encounter:
+    print(story_texts["bbeg"]["boss_chamber"])
+    print(story_texts["bbeg"]["monster_desc"])
+    print("-------------------------------------------------------------------")
+    finale= input(prompts["bbeg"]["final_decision"]).lower().strip()
+    if finale not in ['flee', 'fight']:
+        print("Focus brave knight, time is of the essence!")
+    elif finale == "flee":
+        #print art!
+        print(story_texts["epilogue"]["flee"])
+        break
+    elif finale == "fight":
+        print(story_texts["bbeg"]["cta"])
+        while player_stats["is_alive"]:
+            # 6.1. Hero round
+            print("///////////////////////////////////////////////////////////////////")
+            print(f"Round {round_no}")
+            hp_turn_start = player_stats["hp"]
+            choiceF = input(prompts["bbeg"]["hero_action"]).lower().strip()
+            if choiceF not in ["a", "attack", "h", "heal", "i", "inventory"]:
+                print("Focus brave knight, your life is at stake!")
+                continue
+            elif choiceF in ["h", "heal"]:
+                if "healing_potion" in player_stats["inventory"]:
+                    player_stats["hp"] = min(100, player_stats["hp"]+50)
+                    print(f"You regain your strength! Your HP is now {player_stats['hp']}")
+                    player_stats["inventory"].remove("healing_potion")
+                else:
+                    print("Alas, Sir Knight, you've run out of healing potions!")
+                    continue
+            elif choiceF in ["i", "inventory"]:
+                if not player_stats["inventory"]:
+                    print("Your sack is empty, Sir Knight!")
+                    continue
+                else:
+                    print(f"You still carry {', '.join(player_stats['inventory'])}")
+                    continue
+            elif choiceF in ['a', 'attack']:
+                hero_strike = random.randint(1, 101)
+                if hero_strike <= player_stats["acc"]:
+                    print(story_texts["bbeg"]["hero_hit"])
+                    dmg = random.randint(player_stats["dmg"][0], player_stats["dmg"][1])
+                    bbeg_stats["hp"]-=dmg
+            # 6.1.1. Check boss stats
+                    if bbeg_stats["hp"] <= 0:
+                        print(story_texts["bbeg"]["bbeg_death"])
+                        bbeg_stats["is_alive"] = False
+                        break
+                elif hero_strike > player_stats["acc"]:
+                    print(story_texts["bbeg"]["hero_miss"])
+            print("-------------------------------------------------------------------")
+            # 6.2.1. Boss round
+            print(story_texts["bbeg"]["action"])
+            special_att_chance = random.randint(1, 5)
+            bbeg_strike = random.randint(1, 101)
+            if (bbeg_stats["hp"] <= 32 or special_att_chance == 1) and bbeg_stats["special_att"] > 0:
+                print(story_texts["bbeg"]["bbeg_special"])
+                special_choice = random.choice(["smash", "slash"])
+                attack_type = bbeg_stats["dmg"]["special"][special_choice]
+                if bbeg_strike<= attack_type["acc"]:
+                    bbeg_stats["special_att"] -= 1
+                    dmg = attack_type["dmg"]
+                    player_stats["hp"] -= dmg
+                else:
+                    print(story_texts["bbeg"]["miss"])
+            else:
+                if bbeg_strike <= bbeg_stats["acc"]:
+                    dmg=random.randint(bbeg_stats["dmg"]["regular"][0], bbeg_stats["dmg"]["regular"][1])
+                    player_stats["hp"]-=dmg
+                else:
+                    print(story_texts["bbeg"]["miss"])
+
+            if player_stats["hp"] <= 0:
+                player_stats["is_alive"] = False
+                print(wounds["death"])
+                #print art
+                break
+            elif hp_turn_start > player_stats["hp"]:
+                print(story_texts["bbeg"]["bbeg_hit"])
+                print(f"You have {player_stats['hp']} HP left! Steel yourself!")
+
+            round_no+=1
+
+    # 7. Epilogue
+    if player_stats["is_alive"]:
+        print(story_texts["epilogue"]["victory"])
+        #print art
+    elif not player_stats["is_alive"]:
+        print(story_texts["epilogue"]["defeat"])
+        #print art

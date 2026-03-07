@@ -153,53 +153,52 @@ story_texts = {
         }
     },
     "bbeg":{
-
+        "boss_chamber": (
+            "\nThe hallway ends abruptly, spilling you into a cathedral of jagged stone. "
+            "At its heart, a pyre of white ash smolders, casting long, dancing shadows that "
+            "reach for the ceiling like desperate claws. Bound upon the altar lies the "
+            "Princess, her silk dress torn, a silent prayer frozen on her lips."
+        ),
+        "monster_desc": (
+            "\nTowering over her is a nightmare given flesh — a Bugbear of immense size, "
+            "his matted fur stained with the rust of old battles. He raises a jagged "
+            "black blade, the steel thirsting for royal blood. The air is thick with "
+            "the smell of ozone and impending death."
+        ),
+        "cta": (
+            "\nFor one heartbeat, the beast pauses to savor the terror in her eyes. "
+            "In this sliver of time, the shadows offer you a gift: the element of surprise. "
+        ),
+        "hero_hit": "\nCLANG! Your longsword finds a gap in the beast's armor. The Bugbear roars in pain!",
+        "hero_miss": "\nSWISH! The Bugbear is surprisingly fast for its size. Your blade is far from it's target.",
+        "bbeg_action": "\nThe Bugbear's muscles ripple as it prepares its counter-attack...",
+        "bbeg_special": "\nThe Bugbear enters a bloodthirsty frenzy, unleashing a devastating attack!",
+        "bbeg_hit": "\nCRUNCH! The massive blow connects. You feel your ribs groan under the impact!",
+        "bbeg_miss": "\nWHIFF! The beast swings its heavy club, but you roll just in time. The floor cracks where you stood.",
+        "bbeg_death": "\nThe Iron-Clad Bugbear stumbles, its massive eyes glazed over. With one final, gurgling breath, the mountain of fur collapses. You have triumphed!",
     },
-
-
-    "hub_ahead": (
-        "You make your way through to the central hallway. The temperature drops "
-        "instantly. Every instinct tells you to run, but glory lies just a few "
-        "more steps ahead, where the shadows seem to be moving on their own. " 
-        "There is no turning back now."
-    ),
-
-    "stealth_failure": (
-        "As you reach for the belt, your armor clinks against the chair. The Goblin's "
-        "eyes snap open, bloodshot and wide. He lets out a shrill alarm whistle and "
-        "swipes at you with a jagged dagger! You barely dodge, but you have to flee "
-        "empty-handed. No keys for you this time!"
-    ),
-    "boss_chamber_desc": (
-        "The hallway ends abruptly, spilling you into a cathedral of jagged stone. "
-        "At its heart, a pyre of white ash smolders, casting long, dancing shadows that "
-        "reach for the ceiling like desperate claws. Bound upon the altar lies the "
-        "Princess, her silk dress torn, a silent prayer frozen on her lips."
-    ),
-    "the_monster_revealed": (
-        "Towering over her is a nightmare given flesh—a Bugbear of immense size, "
-        "his matted fur stained with the rust of old battles. He raises a jagged "
-        "black blade, the steel thirsting for royal blood. The air is thick with "
-        "the smell of ozone and impending death."
-    ),
-    "boss_moment_to_act": (
-        "For one heartbeat, the beast pauses to savor the terror in her eyes. "
-        "In this sliver of time, the shadows offer you a gift: the element of surprise. "
-    ),
-    "victory_epilogue": (
-        "As the beast falls with a final, guttural roar, the oppressive weight "
-        "lifts from the room. You untie the silken bonds, and the Princess looks "
-        "at you with eyes that have seen the abyss and returned. You have not "
-        "just survived the Dungeon of Doom; you have conquered its heart!"
-    ),
-    "defeat_epilogue": (
-        "The world narrows down to the cold, unforgiving stone of the dungeon floor. "
-        "As your strength fades, the last thing you see is the flickering shadows "
-        "dancing on the walls, mocking your failed heroism. The Princess's plea "
-        "dies out in the distance, swallowed by the encroaching silence. "
-        "The Dungeon of Doom has claimed another soul, and your story ends "
-        "not with a roar, but with a lingering, lonely echo in the dark."
-    )
+    "epilogue": {
+        "victory": (
+            "\nAs the beast falls with a final, guttural roar, the oppressive weight "
+            "lifts from the room. You untie the silken bonds, and the Princess looks "
+            "at you with eyes that have seen the abyss and returned. You have not "
+            "just survived the Dungeon of Doom; you have conquered its heart!"
+        ),
+        "defeat": (
+            "\nThe world narrows down to the cold, unforgiving stone of the dungeon floor. "
+            "As your strength fades, the last thing you see is the flickering shadows "
+            "dancing on the walls, mocking your failed heroism. The Princess's plea "
+            "dies out in the distance, swallowed by the encroaching silence. "
+            "The Dungeon of Doom has claimed another soul, and your story ends "
+            "not with a roar, but with a lingering, lonely echo in the dark."
+        ),
+        "flee": (
+            "\nThe sheer scale of the horror before you freezes the marrow in your bones." 
+            "Overwhelmed by a primal, gut-wrenching terror, you turn and bolt back into the shadows like a frightened animal." 
+            "You might have saved your skin today, but the stench of your cowardice will follow you longer than any monster ever could." 
+            "Eternal shame is now your only companion..."
+        )
+    }
 }
 
 prompts = {
@@ -219,11 +218,13 @@ prompts = {
             "sleeping_goblin": "\nDo you try to 'take' the key or 'leave' before the goblin wakes up? >>>  ",
         },
     },
-
-    "final_decision": "\nWill you 'fight' or 'flee'?",
-    "invalid_input": "\nInvalid command. Please try again: >>>",
-    "continue": "\nPress Enter to continue... ",
-    "use_key": "\nYou have the Skeleton Key. Use it to unlock the door? ('yes'/'no') >>> "
+    "bbeg": {
+        "final_decision": "\nWill you 'fight' or 'flee'?",
+        "hero_action": (
+            "\nWhat will it be, Sir Knight? "
+            "[A]ttack, [h]eal or [i]nventory status? >>> "
+        ),
+    }
 }
 
 wounds = {
@@ -265,6 +266,39 @@ art_assets = {
 *                                                   |      \     \     \      \  *
 *                                                    \ms          |            \ *
  ********************************************************************************
-'''
-
+''',
+    "first_encounter": {
+        "old_door": r'''
+      ______
+   ,-' ;  ! `-.
+  / :  !  :  . \
+ |_ ;   __:  ;  |
+ )| .  :)(.  !  |
+ |"    (##)  _  |
+ |  :  ;`'  (_) (
+ |  :  :  .     |
+ )_ !  ,  ;  ;  |
+ || .  .  :  :  |
+ |" .  |  :  .  |
+ |mt-2_;----.___|''',
+        "altar": r''' _____
+|_/_\_|
+ || ||
+ || ||
+ ||=||
+ || ||
+''',
+        "junk": r'''⠀⠀⠀⠀⠏⠀⠀⠈⠀⠀⠂⠐⠒⢤⠀⠀⠀⠀
+⠀⠀⠀⡠⠥⠀⠤⠐⠂⠔⠉⠉⠹⣈⡁⠉⠙⠄
+⠀⡤⠮⠤⠤⠷⢠⠤⡸⠅⠀⠼⢹⡁⡅⢀⠅⠀
+⠁⡇⠀⠀⠀⠀⢷⢧⠃⠀⠁⠀⠑⠿⡿⣀⡆⠀
+⠀⠈⡆⠀⠀⠀⠋⠀⠡⠁⠇⡾⠀⠀⢘⠀⠀⠀
+⠀⠀⡎⠀⠀⠀⠀⠀⠘⢤⣇⡆⠀⡄⠌⠀⠀⠀
+⠀⠀⠉⠒⠀⠂⠂⠐⠈⠀⠑⠒⠋⠉⠀⠀⠀⠀'''
+    },
+    "second_encounter": {},
+    "third_encounter": {},
+    "hub_encounter": {},
+    "bbeg": {},
+    "epilogue": {}
 }
