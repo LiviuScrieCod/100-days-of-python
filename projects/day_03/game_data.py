@@ -140,7 +140,17 @@ story_texts = {
                 "Inside, a shimmering red potion awaits."
             )
         },
-
+        "visited": {
+            "goblin": (
+                "\nThe goblin's rhythmic snoring echoes through the room." 
+                "There’s no point in lingering here and risking an unnecessary wake-up call;" 
+                "you've already pushed your luck far enough."
+            ),
+            "potion": (
+                "\nThe stone door stands wide open, exposing the empty alcove." 
+                "You've already taken the only thing of value; only dust and fading magic remain."
+            )
+        }
     },
     "bbeg":{
 
