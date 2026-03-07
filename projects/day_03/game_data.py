@@ -91,9 +91,9 @@ story_texts = {
             "leaving a deep, bloody gash. You lose 30 HP!"
         ),
     },
-    "fourth_encounter": {
+    "hub_encounter": {
         "hub": (
-                "As you walk you end up in a grand, circular hall. The air is stagnant and heavy with the scent of "
+                "\nAs you walk you end up in a grand, circular hall. The air is stagnant and heavy with the scent of "
                 "sulfur. Three paths lie before you, each whispering a different promise of fate."
                 "To the 'LEFT', a heavy iron-bound door stands slightly ajar, a faint golden light "
                 "flickering through the crack. "
@@ -102,20 +102,43 @@ story_texts = {
                 "Straight 'AHEAD', an ominous hallway stretches into total darkness, echoing with "
                 "a low, guttural vibration that makes your teeth rattle."
             ),
-            "hub_left_door": (
-                "You push the door open and freeze. In the center of the room, a slumped "
+        "left_door": {
+            "door": (
+                "\nYou push the door open and freeze. In the center of the room, a slumped "
                 "figure sits on a rickety wooden chair. It's a Goblin guard, snoring loudly "
                 "with his head tilted back. Hanging from his thick leather belt is a heavy "
                 "iron key ring. The keys glint in the candlelight, just inches from his hand."
             ),
-        "left_foor": {
-
+            "stealth_success": (
+                "\nHolding your breath, you reach out with trembling fingers. The iron is cold "
+                "and heavy, but you manage to unhook the ring without a sound. The Goblin "
+                "scratches his nose in his sleep but doesn't stir. You've got the Skeleton Key!"
+            ),
+            "stealth_failure": (
+                "As you reach for the belt, your armor clinks against the chair. The Goblin's "
+                "eyes snap open, bloodshot and wide. He lets out a shrill alarm whistle and "
+                "swipes at you with a jagged dagger! You barely dodge, but you have to flee "
+                "empty-handed. No keys for you this time!"
+            ),
         },
         "ahead": {
-
+            "tunnel": (
+                "You make your way through to the central hallway. The temperature drops "
+                "instantly. Every instinct tells you to run, but glory lies just a few "
+                "more steps ahead, where the shadows seem to be moving on their own. " 
+                "There is no turning back now."
+            ),
         },
         "right_door": {
-
+            "door_no_key": (
+                "\nYou rattle the handle, but the stone door doesn't budge. You'll need a way "
+                "to bypass this lock if you want to see what's hidden behind the runes."
+            ),
+            "door_key": (
+                "\nYou press the iron key into the rune-etched stone. " 
+                "The blue light fades as the door grinds open, revealing a dusty alcove." 
+                "Inside, a shimmering red potion awaits."
+            )
         },
 
     },
@@ -123,21 +146,14 @@ story_texts = {
 
     },
 
-    "hub_right_door_no key": (
-        "You rattle the handle, but the stone door doesn't budge. You'll need a way "
-        "to bypass this lock if you want to see what's hidden behind the runes."
-    ),
+
     "hub_ahead": (
         "You make your way through to the central hallway. The temperature drops "
         "instantly. Every instinct tells you to run, but glory lies just a few "
         "more steps ahead, where the shadows seem to be moving on their own. " 
         "There is no turning back now."
     ),
-    "stealth_success": (
-        "Holding your breath, you reach out with trembling fingers. The iron is cold "
-        "and heavy, but you manage to unhook the ring without a sound. The Goblin "
-        "scratches his nose in his sleep but doesn't stir. You've got the Skeleton Key!"
-    ),
+
     "stealth_failure": (
         "As you reach for the belt, your armor clinks against the chair. The Goblin's "
         "eyes snap open, bloodshot and wide. He lets out a shrill alarm whistle and "
@@ -187,8 +203,13 @@ prompts = {
     "third_encounter": {
         "trap": "\nDo you 'sprint' forward or 'roll' to the side? >>>",
     },
-    "hub": "\nDo you go 'left', 'right' or 'ahead'?",
-    "sleeping_goblin": "\nDo you 'steal' the keys or 'leave' before he wakes up?",
+    "hub_encounter": {
+        "hub": "\nDo you go 'left', 'right' or 'ahead'? >>> ",
+        "hub_left_door": {
+            "sleeping_goblin": "\nDo you try to 'take' the key or 'leave' before the goblin wakes up? >>>  ",
+        },
+    },
+
     "final_decision": "\nWill you 'fight' or 'flee'?",
     "invalid_input": "\nInvalid command. Please try again: >>>",
     "continue": "\nPress Enter to continue... ",

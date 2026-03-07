@@ -103,20 +103,42 @@ while player_stats["is_alive"]:
     print("-------------------------------------------------------------------")
 
     # 5. Encounter Hub
-    print(story_texts["fourth_encounter"]["hub"])
+    print(story_texts["hub_encounter"]["hub"])
+    print("-------------------------------------------------------------------")
     while True:
-
+        choice5 = input(prompts["hub_encounter"]["hub"]).lower().strip()
+        #if goblin alerted - skip hub!
     # 5.1. Left door
-        while True:
-            break
+        if choice5 == "left":
+            print(story_texts["hub_encounter"]["left_door"]["door"])
+            choice5_left_room = input("Do you try to 'take' the key or 'leave' before the goblin wakes up? >>>  ").lower().strip()
+            if choice5_left_room == "take":
+                wakes_up = random.choice([True, False])
+                if wakes_up:
+                    print(story_texts["hub_encounter"]["left_door"]["stealth_failure"])
+                    print("-------------------------------------------------------------------")
+                    print(story_texts["hub_encounter"]["ahead"]["tunnel"])
+                    break
+                else:
+                    print(story_texts["hub_encounter"]["left_door"]["stealth_success"])
+                    player_stats["inventory"].append("iron_key")
+                    # add text to remind player he's already visited this room
+
     # 5.2. Right door
-        while True:
-            break
+        elif choice5 == "right":
+            if "iron_key" in player_stats["inventory"]:
+                print(story_texts["hub_encounter"]["right_door"]["door_key"])
+                player_stats["inventory"].remove("iron_key")
+                player_stats["inventory"].append("healing_potion")
+                #set door is open, if player returns after opening the door
+            else:
+                print(story_texts["hub_encounter"]["right_door"]["door_no_key"])
+                #change text if player has already opened the door
     # 5.3. BBEG tunnel
-        while True:
+        elif choice5 == "ahead":
+            print(story_texts["hub_encounter"]["ahead"]["tunnel"])
             break
 
     # 5.2.3.1. Fight the BBEG
     # 5.2.3.2. Epilogue
     # implement global keywords for retreat/game over and healing
-    break
