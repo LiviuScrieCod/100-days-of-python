@@ -97,6 +97,36 @@ story_texts = {
         "eyes snap open, bloodshot and wide. He lets out a shrill alarm whistle and "
         "swipes at you with a jagged dagger! You barely dodge, but you have to flee "
         "empty-handed. No keys for you this time!"
+    ),
+    "boss_chamber_desc": (
+        "The hallway ends abruptly, spilling you into a cathedral of jagged stone. "
+        "At its heart, a pyre of white ash smolders, casting long, dancing shadows that "
+        "reach for the ceiling like desperate claws. Bound upon the altar lies the "
+        "Princess, her silk dress torn, a silent prayer frozen on her lips."
+    ),
+    "the_monster_revealed": (
+        "Towering over her is a nightmare given flesh—a Bugbear of immense size, "
+        "his matted fur stained with the rust of old battles. He raises a jagged "
+        "black blade, the steel thirsting for royal blood. The air is thick with "
+        "the smell of ozone and impending death."
+    ),
+    "boss_moment_to_act": (
+        "For one heartbeat, the beast pauses to savor the terror in her eyes. "
+        "In this sliver of time, the shadows offer you a gift: the element of surprise. "
+    ),
+    "victory_epilogue": (
+        "As the beast falls with a final, guttural roar, the oppressive weight "
+        "lifts from the room. You untie the silken bonds, and the Princess looks "
+        "at you with eyes that have seen the abyss and returned. You have not "
+        "just survived the Dungeon of Doom; you have conquered its heart!"
+    ),
+    "defeat_epilogue": (
+        "The world narrows down to the cold, unforgiving stone of the dungeon floor. "
+        "As your strength fades, the last thing you see is the flickering shadows "
+        "dancing on the walls, mocking your failed heroism. The Princess's plea "
+        "dies out in the distance, swallowed by the encroaching silence. "
+        "The Dungeon of Doom has claimed another soul, and your story ends "
+        "not with a roar, but with a lingering, lonely echo in the dark."
     )
 }
 
@@ -106,7 +136,11 @@ prompts = {
     "tunnel_split": "\nWill you go 'left' or 'right'?",
     "trap": "\nDo you 'sprint' forward or 'roll' to the side?",
     "hub": "\nDo you go 'left', 'right' or 'ahead'?",
-    "sleeping_goblin": "\nDo you 'steal' the keys or 'leave' before he wakes up?"
+    "sleeping_goblin": "\nDo you 'steal' the keys or 'leave' before he wakes up?",
+    "final_decision": "\nWill you 'fight' or 'flee'?",
+    "invalid_input": "\nInvalid command. Please try again: >>>",
+    "continue": "\nPress Enter to continue... ",
+    "use_key": "\nYou have the Skeleton Key. Use it to unlock the door? ('yes'/'no') >>> "
 }
 
 art_assets = {
