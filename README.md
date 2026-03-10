@@ -58,3 +58,16 @@ The whole UI is basically fueled by a Python dictionary. I didn't want to waste 
 * BBEG and player stats handled in dictionaries
 * Game assets handled in a separate folder as dictionaries
 * Sanitized user inputs in order to avoid user hassle/errors 
+
+### Day 7: Rock, paper, scissors
+* New project, new branch
+* I'll be recreating the classic with a couple of twists
+* I'll add 3 game modes: classic highscore, championship and friendly:
+  * Classic highscore - the classical way of playing the game, no game over, just win battles, get multipliers for consecutive wins, so how high you can get
+  * Championship - story mode of sorts, face off opponents with "special" powers and face a boss that's more than meets the eye
+  * Friendly - but is it though? Similar to classic, but with special moves,"game balancing mechanics" and a powerup
+
+### Day 8: Still at RPS
+* finished and tested survival mode (classic highscore rebranding)
+* new feat to implement - reputation and random opponents
+* 
