@@ -17,7 +17,7 @@ change_opponent = True
 
 print("")
 print(f'{utility["logo"]}\n')
-print("Welcome to the 1978 Rock paper scissors olympics!\n")
+print("Welcome to the 1978 Rock Paper Scissors Olympics!\n")
 
 player_name = input("What is your name? (EVERYONE has two names separated by a space!) >>> ").strip().title().split()
 if len(player_name) < 2:
@@ -39,6 +39,8 @@ while True:
         print("You lose Internet privileges and gain 120 SHAAAAAAAAMEZES!")
         time.sleep(1)
         break
+    # 1. Survival Mode
+    # 1. TODO: Remove cheating/testing prints before push!
     elif choose_game_type == "s":
         while True:
             if change_opponent:
@@ -151,4 +153,54 @@ while True:
 
                 change_opponent = True
                 break
+    elif choose_game_type == "k":
+        # TODO:
+        # 1: Infrastructura și Tragerea la Sorți
+        # 1.1. Duplicate participants: Crearea unei liste temporare cu toți cei 15 oponenți disponibili (fără a strica lista originală din game_data.py).
+        tournament_roster = [opponent[0] for opponent in random_opponents[:]]
+        # 1.2. The Big Draw: Amestecarea listei și felierea ei în 4 Grupe (A, B, C, D) a câte 4 jucători.
+        random.shuffle(tournament_roster)
+        print(tournament_roster)
+        tournament_draw = tournament_roster[:]
+        tournament_draw.insert(random.randint(0,15), " ".join(player_name))
 
+        groups = {}
+        group_names = "ABCD"
+
+        for letter in group_names:
+            groups[letter] = []
+            for _ in range(4):
+                contestant = tournament_draw.pop()
+                groups[letter].append(contestant)
+
+        # Identify player group
+        player_group = ""
+        for letter, group in groups.items():
+            if player_name in group:
+                player_group = letter
+
+        print(f"{player_name} is in group {player_group}")
+
+        # 1.3. The Score Templates: Definirea listei de 9 scenarii de punctaj valide matematic pentru simularea grupelor de boți.
+
+        # 2 Grupa A (Meciurile Tale)
+        # 2.3. Group Stage Loop: Inițializarea unui ciclu de 3 meciuri (fiecare cu un oponent diferit din Grupa A).
+        # 2.2. RPS Logic (1-Hand): Implementarea logicii de joc (Piatră-Foarfecă-Hârtie) pentru o singură mână (Victorie=3p, Egal=1p, Înfrângere=0p).
+        # 2.1. Scoreboard Update: Afișarea punctajului tău după fiecare meci.
+
+        # 3 Simularea Mondială (News Feed)
+        # 3.1. Asignarea random a template-urilor de scor pentru grupele B, C și D.
+        # 3.2. Generarea unor punctaje plauzibile pentru ceilalți 3 colegi de grupă (asigurând calificarea protagonistului dacă are ≥4 puncte).
+        # 3.3. Afișarea tabelelor finale ale tuturor grupelor și anunțarea celor 8 calificați în Sferturi.
+
+        # 4 Sferturi și Semifinale (Eliminatorii)
+        # 4.1. Best of 3 Engine: Modificarea logicii de joc pentru a necesita 2 victorii din 3 mâini pentru a trece mai departe.
+        # 4.2. Generarea automată a câștigătorilor dintre boți folosind random.choice și afișarea unor „știri dramatice” despre masacrul din celelalte meciuri.
+        # 4.3. The Rock Eater Bias: Implementarea șansei de 75% pentru anumite alegeri (Piatră/Foarfecă/Hârtie) la boșii din etapele superioare.
+
+        # 5 Finala și Epilogul (The Twist)
+        # 5.1. Anunțarea finalei și execuția momentului în care AI-ul calificat îi „cedează” locul lui Mr. CHEATer.
+        # 5.2. Programarea lui Mr. CHEATer să aleagă mereu mutarea care bate jucătorul (ai = (player + 1) % 3).
+        # 5.3. Implementarea comenzii secrete "cheat" care ignoră logica clasică și îi aduce victoria jucătorului.
+        # 5.4. Afișarea epilogului dramatic și întoarcerea la meniul principal.
+        break
