@@ -36,3 +36,15 @@ random_opponents = [
     ["Zinaida the Relentless", "Take a seat"],
     ["The Janitor (Who Saw Everything)", "Eye gouger"]
 ]
+
+# --------------------------------------------------------------------- #
+# Tournament related data
+
+group_standings = [
+    [6,4,2,0],
+    [5,4,3,0],
+    [4,4,3,1],
+    [5,3,3,1],
+    [5,3,2,2],
+    [5,5,2,0],
+]
