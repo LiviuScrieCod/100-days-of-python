@@ -40,7 +40,7 @@ while True:
         time.sleep(1)
         break
     # 1. Survival Mode
-    # 1. TODO: Remove cheating/testing prints before push!
+    # 1. 1. TODO: Remove cheating/testing prints before push!
     elif choose_game_type == "s":
         while True:
             if change_opponent:
@@ -153,6 +153,8 @@ while True:
 
                 change_opponent = True
                 break
+    # 2. Tournament Mode
+    # 2. 1. TODO: Remove cheating/testing prints before push! Remove duplicates! Refactor!
     elif choose_game_type == "k":
         # create contestants list
         tournament_roster = [opponent[0] for opponent in random_opponents[:]]
