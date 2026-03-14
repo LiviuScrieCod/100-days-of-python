@@ -381,4 +381,13 @@ while True:
             qualifiers_list_permanent = qualifiers_list_temp[:]
             qualifiers_list_temp = []
             olympics_round.pop()
+
+    #   Grand final
+        print(f"\nIt's time for the grand finale of the 1978 Rock Paper Scissors Olympics!")
+        print(f"It has come down to this: {qualifiers_list_permanent[0]} vs {qualifiers_list_permanent[1]}")
+        time.sleep(0.7)
+        bot_finalist = [name for name in qualifiers_list_permanent if name!=tournament_player_name]
+        print(f"But wait, this just in! It appears that {bot_finalist} has Opera tickets! He'll be replaced by last year's champion: Mr. CHEATer!")
+        print("This is going to be interesting... Will last year's olympian manage to defend his title?")
+
     break
