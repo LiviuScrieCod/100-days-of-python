@@ -390,4 +390,62 @@ while True:
         print(f"But wait, this just in! It appears that {bot_finalist} has Opera tickets! He'll be replaced by last year's champion: Mr. CHEATer!")
         print("This is going to be interesting... Will last year's olympian manage to defend his title?")
 
+        #Finals
+        while True:
+            tournament_player_choice = input(
+                "Contestants, choose your weapon!\n['rock', 'paper' or 'scissors'? (q to wuss out of it)] >>> ").strip().lower()
+            if tournament_player_choice == "q":
+                print("\nCracked under pressure!")
+                print(
+                    f"{tournament_player_name} was overwhelmed by the magnitude of the challenge! Once again, Mr. CHEATer takes the title home!")
+                break
+            elif tournament_player_choice == "cheat":
+                tournament_player_choice = special_choices["michael_jackson"]
+                bot_choice = random.randrange(len(valid_moves))
+                print(f"{tournament_player_name} picks: {tournament_player_choice}")
+                print(f"Mr. CHEATer picks: {basic_choices[bot_choice]}")
+                time.sleep(0.7)
+                print(f"UNBELIEVABLE! {tournament_player_choice} wins the round! SUCH SKILL! SUCH MOVES! THE AUDACITY!")
+                tournament_player_score+=1
+            elif tournament_player_choice not in valid_moves or tournament_player_choice !="cheat":
+                print(f"\nMr. CHEATer will not dignify your lack of skill with an answer! He demands you do better!")
+                continue
+            time.sleep(0.5)
+            print("ROCK!")
+            time.sleep(0.5)
+            print("PAPER!")
+            time.sleep(0.5)
+            print("SCISSORS!")
+            time.sleep(0.5)
+            print("GO!")
+            time.sleep(1)
+            tournament_player_choice = valid_moves.index(tournament_player_choice)
+            bot_choice = random.randrange(len(valid_moves))
+            print(f"{tournament_player_name} picks: {basic_choices[tournament_player_choice]}")
+            print(f"Mr. CHEATer picks: {basic_choices[bot_choice]}")
+            if (tournament_player_choice == bot_choice) or (tournament_player_choice - bot_choice) % 3 == 1:
+                print("Wait a minute! Mr. CHEATer said he changed his mind.\n")
+                counter_choice_index = basic_choices.index(tournament_player_choice)
+                counter_choice = (counter_choice_index + 1) % 3
+                print(f"He actually chose: {valid_moves[counter_choice]}")
+            else:
+                print(
+                    f"Well played! What else can Mr. CHEATer do but win?!")
+                bot_score += 1
+
+            next_match = input("Type 'q' to quit, anything else to continue >>> ").lower().strip()
+            if next_match == "q":
+                print("\nNobody remembers a quitter...")
+                break
+            if tournament_player_score == 3:
+                print(f"Mr. CHEATer's tyranny is over! {tournament_player_name} has ousted the monster who's been terorizing us for decades!")
+                print("Long live the free Rock Paper Scissors Olympics!")
+                print("Long live our hero!")
+                print(f"{utility['cup']}")
+                break
+            elif bot_score == 3:
+                print("You have failed...")
+                print(
+                    f"As {tournament_player_name} walks towards the lockers room, Mr. CHEATer's fans swarm around him. Another year, another cup!")
+                break
     break
