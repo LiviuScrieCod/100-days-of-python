@@ -156,6 +156,7 @@ while True:
     # 2. Tournament Mode
     # 2. 1. TODO: Remove cheating/testing prints before push! Remove duplicates! Refactor!
     elif choose_game_type == "k":
+        player_quit = False
         # create contestants list
         tournament_roster = [opponent[0] for opponent in random_opponents[:]]
         random.shuffle(tournament_roster)
@@ -208,12 +209,18 @@ while True:
             bot_name = bot_data[0]
             print(utility["delimiter"])
             print("The contestants are ready to go!")
+
+            # debugging/testing only
+            # bot_choice = random.randrange(len(valid_moves))
+            # print(f"botul a ales {bot_choice}")
+
             tournament_player_choice = input(
                 "Contestants, choose your weapon!\n['rock', 'paper' or 'scissors'? (q to wuss out of it)] >>> ").strip().lower()
             if tournament_player_choice == "q":
                 print("\nEXTRA, EXTRA, READ ALL ABOUT IT!")
                 print(f"{tournament_player_name} buckled under the pressure and ran off into the crowd! Shame is forever theirs!")
                 print("Tune in tomorrow for the finals!")
+                player_quit = True
                 break
             elif tournament_player_choice not in valid_moves:
                 print(f"\nI don't know what happened there, but the referee will have none of it")
@@ -251,6 +258,7 @@ while True:
             next_match = input("Type 'q' to quit, anything else to continue >>> ").lower().strip()
             if next_match == "q":
                 print("\nNobody remembers a quitter...")
+                player_quit=True
                 break
 
             if index < 2:
@@ -260,14 +268,17 @@ while True:
                 print("Let's see who qualified for the next stage!")
             time.sleep(0.7)
 
+        if player_quit:
+            break
+
         groups[player_group][tournament_player_index][1] = tournament_player_group_score
 
-        print(player_group_bots)
+        # print(player_group_bots)
         for i in range(len(player_group_bots)):
             for j in range(i+1, len(player_group_bots)):
                 bot1 = player_group_bots[i]
                 bot2 = player_group_bots[j]
-                print(f"{bot1[0]} vs {bot2[0]}")
+                # print(f"{bot1[0]} vs {bot2[0]}")
                 result = random.choice(['bot1', 'bot2', 'draw'])
                 if result == 'bot1':
                     bot1[1]+=3
@@ -277,7 +288,7 @@ while True:
                     bot1[1] += 1
                     bot2[1] += 1
 
-        print(groups[player_group])
+        # print(groups[player_group])
         groups[player_group].sort(key=lambda x:(x[1], x[0] == tournament_player_name), reverse=True)
 
         for i, letter in enumerate(non_player_groups):
@@ -290,6 +301,7 @@ while True:
             print(f"\nGroup {letter} standings:")
             for member in group:
                 print(f"{member[0]} --- {member[1]}")
+            next_group = input("Press any key to view the next group standings >>> ")
 
         tournament_player_score = 0
         bot_score = 0
@@ -302,31 +314,40 @@ while True:
             qualifiers_list_permanent.append(winner)
             qualifiers_list_permanent.append(runner_up)
 
-        print(qualifiers_list_permanent)
+        # print(qualifiers_list_permanent)
         random.shuffle(qualifiers_list_permanent)
 
         olympics_round = ["Finals","Semi-final","Quarter-finals"]
         print(utility["delimiter"])
-        print("And we're back! 8 Contestants remaining and only one gold medal. Who will be the 1978 Rock Paper Scissors champion?")
+        print(f"\nAnd we're back! 8 contestants remaining and only one gold medal. The {olympics_round[len(olympics_round)-1]} is about to start. Who will be the 1978 Rock Paper Scissors champion?")
+        print(f"Contestants will play a best of three match! If it's a draw they'll just have to keep playing until one of them wins the round.")
         while len(qualifiers_list_permanent) > 2:
+            if player_quit:
+                break
             while len(qualifiers_list_permanent)> 1:
                 player1 = qualifiers_list_permanent.pop(random.randrange(len(qualifiers_list_permanent)))
                 player2 = qualifiers_list_permanent.pop(random.randrange(len(qualifiers_list_permanent)))
+                time.sleep(0.7)
+                print(f"\nThe next match is {player1} vs {player2}")
 
                 if tournament_player_name in [player1, player2]:
                     match_duo = [player1, player2]
                     match_duo.remove(tournament_player_name)
                     bot_opponent = match_duo[0]
-                    print(f"{tournament_player_name} is on stage! One of the matches of the {olympics_round[len(olympics_round)-1]} is about to begin")
+                    print(f"\n{tournament_player_name} is on stage! One of the matches of the {olympics_round[len(olympics_round)-1]} are about to begin")
                     print(f"Which of these two has the mental fortitude to obliterate their opponent?")
                     while tournament_player_score<2 and bot_score<2:
+                        # debugging/testing only
+                        # bot_choice = random.randrange(len(valid_moves))
+                        # print(f"bot eliminatoriu a ales {bot_choice}!")
                         tournament_player_choice = input(
-                            "Contestants, choose your weapon!\n['rock', 'paper' or 'scissors'? (q to wuss out of it)] >>> ").strip().lower()
+                            "\nContestants, choose your weapon!\n['rock', 'paper' or 'scissors'? (q to wuss out of it)] >>> ").strip().lower()
                         if tournament_player_choice == "q":
                             print("\nEXTRA, EXTRA, READ ALL ABOUT IT!")
                             print(
                                 f"{tournament_player_name} buckled under the pressure and ran off into the crowd! Shame is forever theirs!")
                             print("Tune in tomorrow for the finals!")
+                            player_quit = True
                             break
                         elif tournament_player_choice not in valid_moves:
                             print(f"\nThis is far too important to mess around! Do it again and do it right!")
@@ -358,37 +379,54 @@ while True:
                         next_match = input("Type 'q' to quit, anything else to continue >>> ").lower().strip()
                         if next_match == "q":
                             print("\nNobody remembers a quitter...")
+                            player_quit = True
                             break
                     if tournament_player_score == 2:
-                        print(f"QUALIFIED! {tournament_player_name} has what it takes to move to the next roung!")
+                        print("")
+                        time.sleep(1)
+                        print(f"QUALIFIED! {tournament_player_name} has what it takes to move to the next round!")
+                        time.sleep(0.5)
                         print("We'll be back after commercials")
                         qualifiers_list_temp.append(tournament_player_name)
                     elif bot_score == 2:
                         print("You don't always get what you want...")
                         print(f"As {tournament_player_name} walks towards the lockers room, fans of {bot_opponent} rush to the stage to congratulate their hero!")
                         qualifiers_list_temp.append(bot_opponent)
+                        player_quit = True
+                        break
                 else:
-                    for _ in range(3):
-                        stage_winner = random.choice([player1, player2])
-                        print(f"WOW! Did you see that?! {stage_winner}'s hands are unstoppable!")
+                    stage_winner = random.choice([player1, player2])
+                    print(f"WOW! Did you see that?! {stage_winner}'s hands are unstoppable!")
                     qualifiers_list_temp.append(stage_winner)
 
+                if player_quit:
+                    break
                 tournament_player_score=0
                 bot_score=0
             print(utility["delimiter"])
             if len(olympics_round)>1:
-                print(f"We are back and the {olympics_round[len(olympics_round) - 1]} are about to start!")
+                print(f"\nWe are back and the {olympics_round[len(olympics_round) - 2]} are about to start!")
             qualifiers_list_permanent = qualifiers_list_temp[:]
             qualifiers_list_temp = []
             olympics_round.pop()
+            # Debugging/testing only
+            # print(qualifiers_list_permanent)
+            # print(qualifiers_list_temp)
 
+        if player_quit:
+            break
     #   Grand final
+        print("")
         print(f"\nIt's time for the grand finale of the 1978 Rock Paper Scissors Olympics!")
+        time.sleep(0.7)
         print(f"It has come down to this: {qualifiers_list_permanent[0]} vs {qualifiers_list_permanent[1]}")
         time.sleep(0.7)
         bot_finalist = [name for name in qualifiers_list_permanent if name!=tournament_player_name]
-        print(f"But wait, this just in! It appears that {bot_finalist} has Opera tickets! He'll be replaced by last year's champion: Mr. CHEATer!")
+        print(f"\nBut wait, this just in! It appears that {' '.join(bot_finalist)} has Opera tickets! He'll be replaced by last year's champion: Mr. CHEATer!")
+        time.sleep(0.7)
+        print("It's a best of five showdown! Of course... draws don't count.")
         print("This is going to be interesting... Will last year's olympian manage to defend his title?")
+        time.sleep(0.7)
 
         #Finals
         while True:
@@ -402,12 +440,21 @@ while True:
             elif tournament_player_choice == "cheat":
                 tournament_player_choice = special_choices["michael_jackson"]
                 bot_choice = random.randrange(len(valid_moves))
+                print(f"finala bot alegere: {bot_choice}")
                 print(f"{tournament_player_name} picks: {tournament_player_choice}")
                 print(f"Mr. CHEATer picks: {basic_choices[bot_choice]}")
                 time.sleep(0.7)
-                print(f"UNBELIEVABLE! {tournament_player_choice} wins the round! SUCH SKILL! SUCH MOVES! THE AUDACITY!")
+                print(f"UNBELIEVABLE! {tournament_player_name} wins the round! SUCH SKILL! SUCH MOVES! THE AUDACITY!")
                 tournament_player_score+=1
-            elif tournament_player_choice not in valid_moves or tournament_player_choice !="cheat":
+                if tournament_player_score == 3:
+                    print(
+                        f"Mr. CHEATer's tyranny is over! {tournament_player_name} has ousted the monster who's been terorizing us for decades!")
+                    print("Long live the free Rock Paper Scissors Olympics!")
+                    print("Long live our hero!")
+                    print(f"{utility['cup']}")
+                    break
+                continue
+            elif tournament_player_choice not in valid_moves and tournament_player_choice !="cheat":
                 print(f"\nMr. CHEATer will not dignify your lack of skill with an answer! He demands you do better!")
                 continue
             time.sleep(0.5)
@@ -424,19 +471,20 @@ while True:
             print(f"{tournament_player_name} picks: {basic_choices[tournament_player_choice]}")
             print(f"Mr. CHEATer picks: {basic_choices[bot_choice]}")
             if (tournament_player_choice == bot_choice) or (tournament_player_choice - bot_choice) % 3 == 1:
+                time.sleep(0.7)
                 print("Wait a minute! Mr. CHEATer said he changed his mind.\n")
-                counter_choice_index = basic_choices.index(tournament_player_choice)
-                counter_choice = (counter_choice_index + 1) % 3
-                print(f"He actually chose: {valid_moves[counter_choice]}")
+                time.sleep(1)
+                counter_choice = (tournament_player_choice + 1) % 3
+                print(f"He actually chose {valid_moves[counter_choice]}")
+                print(f"\n{basic_choices[counter_choice]}")
+                time.sleep(1)
+                print(f"You thought you could win?! How cute!")
+                bot_score+=1
             else:
                 print(
                     f"Well played! What else can Mr. CHEATer do but win?!")
                 bot_score += 1
 
-            next_match = input("Type 'q' to quit, anything else to continue >>> ").lower().strip()
-            if next_match == "q":
-                print("\nNobody remembers a quitter...")
-                break
             if tournament_player_score == 3:
                 print(f"Mr. CHEATer's tyranny is over! {tournament_player_name} has ousted the monster who's been terorizing us for decades!")
                 print("Long live the free Rock Paper Scissors Olympics!")
@@ -448,4 +496,8 @@ while True:
                 print(
                     f"As {tournament_player_name} walks towards the lockers room, Mr. CHEATer's fans swarm around him. Another year, another cup!")
                 break
-    break
+
+            next_match = input("Type 'q' to quit, anything else to continue >>> ").lower().strip()
+            if next_match == "q":
+                print("\nNobody remembers a quitter...")
+                break
