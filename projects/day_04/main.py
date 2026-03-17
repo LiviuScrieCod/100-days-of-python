@@ -3,6 +3,11 @@ import time
 from art_assets import *
 from game_data import *
 
+random_target_score = random.randint(2, 4)
+
+
+change_objective = True
+
 player_score = 0.0
 
 multiplier = 1.0
@@ -28,11 +33,11 @@ elif len(player_name) > 2:
 print("\nThis edition's main events are:")
 while True:
     print("[S]urvival highscore")
-    print("[K]ockout")
-    print("[F]riendly")
+    print("[K]nockout")
+    print("[H]unter")
     print("[Q]uit game as if unworthy of fatherly love\n")
     choose_game_type = input("Which will it be? >>> ").lower().strip()
-    if choose_game_type not in ["s", "k", "f", "q"]:
+    if choose_game_type not in ["s", "k", "h", "q"]:
         print("We're afraid that this particular event is not available...")
         continue
     elif choose_game_type == "q":
@@ -154,7 +159,7 @@ while True:
                 change_opponent = True
                 break
     # 2. Tournament Mode
-    # 2. 1. TODO: Remove cheating/testing prints before push! Remove duplicates! Refactor!
+    # 2. 1. TODO: Remove cheating/testing prints before push!
     elif choose_game_type == "k":
         player_quit = False
         # create contestants list
@@ -501,3 +506,98 @@ while True:
             if next_match == "q":
                 print("\nNobody remembers a quitter...")
                 break
+    # 3. Hunter Mode
+    # 3. 1. TODO: Remove cheating/testing prints before push!
+    elif choose_game_type == "h":
+        achievements_unlocked = {
+            "specialist": {
+                "status": False,
+            },
+            "survivor": {
+                "status": False,
+            },
+            "over_9000": {
+                "status": False,
+            },
+            "mirror": {
+                "status": False,
+            },
+            "balancer": {
+                "status": False,
+            }
+        }
+        print(f"Prepare for the hunt, {' '.join(player_name)}! As you play, various achievements will become available. Do your best to complete each and every task!")
+        time.sleep(3)
+        print("Let the hunt begin!")
+        time.sleep(1)
+        print("3")
+        time.sleep(1)
+        print("2")
+        time.sleep(1)
+        print("1")
+        time.sleep(1)
+        print("GO!")
+        while True:
+            print("Your current achievements are: ")
+            print("You've yet to achieve: ")
+            if change_objective:
+                current_objective = random.choice([o for o, s in achievements_unlocked.items() if s==False])
+                objective_timer = random.randint(8, 12)
+                win_target = random.randint(2, 4)
+                rounds_target = random.randint(4, 6)
+                winning_hand = random.randint(0, 2)
+                change_objective = False
+            print(f"\nYour current objective is: {current_objective}")
+            print(f"You have {objective_timer} rounds to achieve your objective!")
+
+            hunter_choice = input(
+                "Hunter, how do you attack?\n['rock', 'paper' or 'scissors'? (q to wuss out of it)] >>> ").strip().lower()
+            if hunter_choice == "q":
+                print("The hunter has become the hunted!")
+                current_objective = ""
+                # TODO: pregateste asta pentru reset!
+                achievements_unlocked = {
+                }
+                change_objective = True
+                break
+            elif hunter_choice not in valid_moves:
+                print("\nThe hunt must resume. Steel yourself!")
+                continue
+
+            # Debugging/Testing only
+            # prey_choice =random.randrange(len(valid_moves))
+            # print(prey_choice)
+            time.sleep(0.5)
+            print("ROCK!")
+            time.sleep(0.5)
+            print("PAPER!")
+            time.sleep(0.5)
+            print("SCISSORS!")
+            time.sleep(0.5)
+            print("GO!")
+            time.sleep(1)
+            hunter_choice = valid_moves.index(hunter_choice)
+            prey_choice =random.randrange(len(valid_moves))
+            print(f"{hunter_choice} chooses {basic_choices[hunter_choice]}")
+            print(f"Prey chooses {basic_choices[prey_choice]}")
+            if hunter_choice == prey_choice:
+                print("A fierce beast that's not yet ready to give in!")
+            elif (hunter_choice - prey_choice) % 3 == 1:
+                print("Bull's eye!")
+            else:
+                print("This one got away! Perhaps next time...")
+
+            next_hunt=input("Type 'q' to quit, anything else to continue >>> ").lower().strip()
+            if next_hunt == "q":
+                print("\nIt gets to live another day.\n")
+                current_objective = ""
+                # TODO: fix pentru reset
+                # achievements_unlocked = {
+                #
+                # }
+                change_objective = True
+                break
+
+            # break
+
+

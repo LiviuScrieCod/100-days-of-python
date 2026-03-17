@@ -70,4 +70,11 @@ The whole UI is basically fueled by a Python dictionary. I didn't want to waste 
 ### Day 8: Still at RPS
 * finished and tested survival mode (classic highscore rebranding)
 * new feat to implement - reputation and random opponents
+
+### Days 9-12: Still at RPS
+* implemented reputation and random opponents, as well as a reset caused by losing a match
+* implemented a tournament style gameplay mode - groups, quarters, semi-finals and a boss fight.
+* groups are 3 matches against random opponents, while quarters and up it's best out of 3/5 with a twist at the end.
+* decided to implement an achievements run - no game over if you lose a match, but there are rotating goals to achieve during gameplay
 * 
+* Gave up on the idea of refactoring the code - it's already far exceeded the intended scope of the course project and there's nothing to be gained by spending even more time on it
