@@ -48,3 +48,29 @@ group_standings = [
     [5,3,2,2],
     [5,5,2,0],
 ]
+
+# --------------------------------------------------------------------- #
+# Hunter related data
+
+achievements_metadata = {
+    "specialist": {
+        "title": "The Specialist",
+        "description": "win {%} rounds, using {^}",
+    },
+    "survivor": {
+        "title": "The Survivor",
+        "description": "don't lose for {%} consecutive rounds"
+    },
+    "over_9000": {
+        "title": "Over 9000!",
+        "description": "win using one special move"
+    },
+    "mirror": {
+        "title": "Mirror",
+        "description": "win a round using the prey's previous choice"
+    },
+    "balancer": {
+        "title": "Balancer",
+        "description": "during the next {&} hands get 2 draws"
+    }
+}
