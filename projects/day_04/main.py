@@ -598,6 +598,10 @@ while True:
             print(f"You have to {description_raw} to unlock the achievement")
             print(f"You have {objective_timer} rounds to achieve your objective!")
 
+            # Debugging/Testing only
+            # prey_choice = random.randrange(len(valid_moves))
+            # print(f"Prey chooses {prey_choice}")
+
             hunter_choice = (input(
                 "Hunter, how do you attack?\n['rock', 'paper' or 'scissors'? (q to wuss out of it)] >>> ")
                              .strip()
@@ -634,15 +638,44 @@ while True:
             if hunter_choice == prey_choice:
                 print("A fierce beast that's not yet ready to give in!")
                 draw_count += 1
-                if current_objective == "balancer" and draw_count == 2:
+                survivor_streak += 1
+                if (current_objective == "balancer" and draw_count == 2) or (
+                        current_objective == "survivor" and survivor_streak == rounds_target_amount):
                     print(f"Achievement {achievements_metadata[current_objective]['title']} unlocked!")
-                    locked_achievements[current_objective]["status"] = True
                     just_unlocked = True
-                    change_objective = True
+
             elif (hunter_choice - prey_choice) % 3 == 1:
                 print("Bull's eye!")
+                if (current_objective == "specialist" and hunter_choice == winning_hand):
+                    win_count += 1
+                survivor_streak += 1
+                if (current_objective == "survivor" and survivor_streak == rounds_target_amount) or (
+                        current_objective == "mirror" and hunter_choice == last_prey_choice) or (
+                        current_objective == "specialist" and win_count == rounds_target_amount):
+                    print(f"Achievement {achievements_metadata[current_objective]['title']} unlocked!")
+                    just_unlocked = True
+
             else:
                 print("This one got away! Perhaps next time...")
+                survivor_streak = 0
+
+            if just_unlocked:
+                unlocked_achievements.append(achievements_metadata[current_objective]['title'])
+                locked_achievements[current_objective]["status"] = True
+                change_objective = True
+
+            last_prey_choice = prey_choice
+            objective_timer -= 1
+
+            if objective_timer == 0 and not just_unlocked:
+                print(
+                    f"Objective {achievements_metadata[current_objective]['title']} failed! Time for a new challenge!")
+                change_objective = True
+
+            if len(unlocked_achievements) == 5:
+                print("You are the master of The Hunt! Well done!")
+                print("Time to try a different game mode.")
+                break
 
             next_hunt = input("Type 'q' to quit, anything else to continue >>> ").lower().strip()
             if next_hunt == "q":
@@ -655,13 +688,4 @@ while True:
                 change_objective = True
                 break
 
-            if just_unlocked:
-                unlocked_achievements.append(achievements_metadata[current_objective]['title'])
-                change_objective = True
-            last_prey_choice = prey_choice
-            objective_timer -= 1
-            if objective_timer == 0:
-                print(
-                    f"Objective {achievements_metadata[current_objective]['title']} failed! Time for a new challenge!")
-                change_objective = True
             # break
