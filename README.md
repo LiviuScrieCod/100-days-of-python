@@ -100,7 +100,8 @@ actual learning and coding.
 * groups are 3 matches against random opponents, while quarters and up it's best out of 3/5 with a twist at the end.
 * decided to implement an achievements run - no game over if you lose a match, but there are rotating goals to achieve
   during gameplay
-* implemented a flagging/unlock system for achievements
-*
+* implemented a flagging/unlock system for achievements and powerups
 * Gave up on the idea of refactoring the code - it's already far exceeded the intended scope of the course project and
   there's nothing to be gained by spending even more time on it
+* Could do some more UI/UX improvements, but I've already spent too much on this project; it was a nice project but
+  it's time to move on!

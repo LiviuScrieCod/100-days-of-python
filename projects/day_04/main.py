@@ -3,8 +3,6 @@ import time
 from art_assets import *
 from game_data import *
 
-random_target_score = random.randint(2, 4)
-
 change_objective = True
 
 player_score = 0.0
@@ -24,7 +22,9 @@ print(f'{utility["logo"]}\n')
 print("Welcome to the 1978 Rock Paper Scissors Olympics!\n")
 
 player_name = input("What is your name? (EVERYONE has two names separated by a space!) >>> ").strip().title().split()
-if len(player_name) < 2:
+if len(player_name) < 1:
+    player_name = ["Boris", "Icouldn'tbeaskedovich"]
+elif len(player_name) < 2:
     player_name.append("Icouldn'tbeaskedovich")
 elif len(player_name) > 2:
     player_name = [player_name[0], "Ican'ttakeahintson"]
@@ -72,7 +72,8 @@ while True:
             print(f"Max Multiplier: {multiplier_record}")
             print(f"Formerly known as: {last_title}\n")
             ai_choice = random.randrange(len(valid_moves))
-            print(ai_choice)
+            # Testing/debugging only
+            # print(ai_choice)
             player_choice = input(
                 "Contestants choose: 'rock', 'paper' or 'scissors'? (q to wuss out of it) >>> ").strip().lower()
             if player_choice == "q":
@@ -469,8 +470,9 @@ while True:
                 break
             elif tournament_player_choice == "cheat":
                 tournament_player_choice = special_choices["michael_jackson"]
-                bot_choice = random.randrange(len(valid_moves))
-                print(f"finala bot alegere: {bot_choice}")
+                # Testing/Debugging only
+                # bot_choice = random.randrange(len(valid_moves))
+                # print(f"finala bot alegere: {bot_choice}")
                 print(f"{tournament_player_name} picks: {tournament_player_choice}")
                 print(f"Mr. CHEATer picks: {basic_choices[bot_choice]}")
                 time.sleep(0.7)
@@ -607,10 +609,9 @@ while True:
             print(f"You have to {description_raw} to unlock the achievement")
             print(f"You have {objective_timer} rounds to achieve your objective!")
 
-            # Debugging/Testing only
-            # prey_choice = random.randrange(len(valid_moves))
-            # print(f"Prey chooses {prey_choice}")
             prey_choice = random.randrange(len(valid_moves))
+            # Debugging/Testing only
+            # print(f"Prey chooses {prey_choice}")
             hunter_choice = (input(
                 "Hunter, how do you attack?\n['rock', 'paper' or 'scissors'? (q to wuss out of it)] >>> ")
                              .strip()
