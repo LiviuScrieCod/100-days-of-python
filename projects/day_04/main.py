@@ -556,18 +556,25 @@ while True:
             }
         }
         unlocked_achievements = []
+        powers_pool = [
+            ["spock", "You become one with the prey!"],
+            ["clock", "You gain additional time to achieve your objective!"],
+            ["truck", "Nothing survives the truck!"]
+        ]
+        player_powers = []
+        player_wins = False
         print(
             f"Prepare for the hunt, {' '.join(player_name)}! As you play, various achievements will become available. "
             f"Do your best to complete each and every task!")
-        # time.sleep(3)
+        time.sleep(1.5)
         print("Let the hunt begin!")
-        # time.sleep(1)
+        time.sleep(1)
         print("3")
-        # time.sleep(1)
+        time.sleep(1)
         print("2")
-        # time.sleep(1)
+        time.sleep(1)
         print("1")
-        # time.sleep(1)
+        time.sleep(1)
         print("GO!")
         while True:
             print(f"\nYour current achievements are: {', '.join(unlocked_achievements)}")
@@ -578,6 +585,7 @@ while True:
                 win_count = 0
                 survivor_streak = 0
                 draw_count = 0
+                special_move_counter = 0
                 last_prey_choice = None
                 just_unlocked = False
 
@@ -601,7 +609,7 @@ while True:
             # Debugging/Testing only
             # prey_choice = random.randrange(len(valid_moves))
             # print(f"Prey chooses {prey_choice}")
-
+            prey_choice = random.randrange(len(valid_moves))
             hunter_choice = (input(
                 "Hunter, how do you attack?\n['rock', 'paper' or 'scissors'? (q to wuss out of it)] >>> ")
                              .strip()
@@ -610,11 +618,25 @@ while True:
             if hunter_choice == "q":
                 print("The hunter has become the hunted!")
                 current_objective = ""
-                # TODO: pregateste asta pentru reset!
-                # achievements_unlocked = {
-                # }
                 change_objective = True
                 break
+            elif hunter_choice in player_powers:
+                if hunter_choice == "clock":
+                    objective_timer += 3
+                    powers_pool.append(["clock", "You gain additional time to achieve your objective!"])
+                    print("\nThe sands of time have altered their flow for you!")
+                    continue
+                elif hunter_choice == "truck":
+                    powers_pool.append(["truck", "Nothing survives the truck!"])
+                    player_wins = True
+                elif hunter_choice == "spock":
+                    powers_pool.append(["spock", "You become one with the prey"])
+                    # hunter_choice = prey_choice
+                    print(f"{special_choices['spock']}")
+                    print("\nYou become one with the prey!")
+                else:
+                    print("You haven't mastered this power yet!")
+                    continue
             elif hunter_choice not in valid_moves:
                 print("\nThe hunt must resume. Steel yourself!")
                 continue
@@ -631,11 +653,21 @@ while True:
             time.sleep(0.5)
             print("GO!")
             time.sleep(1)
-            hunter_choice = valid_moves.index(hunter_choice)
-            prey_choice = random.randrange(len(valid_moves))
-            print(f"{' '.join(player_name)} chooses {basic_choices[hunter_choice]}")
+            if hunter_choice in player_powers:
+                player_powers.remove(hunter_choice)
+            else:
+                hunter_choice = valid_moves.index(hunter_choice)
+            # prey_choice = random.randrange(len(valid_moves))
+            if player_wins:
+                print(f"{' '.join(player_name)} chooses {special_choices[hunter_choice]}")
+                hunter_choice = 0
+            else:
+                if hunter_choice == "spock":
+                    hunter_choice = prey_choice
+                print(f"{' '.join(player_name)} chooses {basic_choices[hunter_choice]}")
             print(f"Prey chooses {basic_choices[prey_choice]}")
-            if hunter_choice == prey_choice:
+
+            if hunter_choice == prey_choice and not player_wins:
                 print("A fierce beast that's not yet ready to give in!")
                 draw_count += 1
                 survivor_streak += 1
@@ -644,16 +676,22 @@ while True:
                     print(f"Achievement {achievements_metadata[current_objective]['title']} unlocked!")
                     just_unlocked = True
 
-            elif (hunter_choice - prey_choice) % 3 == 1:
-                print("Bull's eye!")
-                if (current_objective == "specialist" and hunter_choice == winning_hand):
+            elif (hunter_choice - prey_choice) % 3 == 1 or player_wins:
+                if player_wins:
+                    print("The truck crushes all!")
+                else:
+                    print("Bull's eye!")
+                special_move_counter += 1
+                if (current_objective == "specialist" and (hunter_choice == winning_hand or player_wins)):
                     win_count += 1
                 survivor_streak += 1
                 if (current_objective == "survivor" and survivor_streak == rounds_target_amount) or (
-                        current_objective == "mirror" and hunter_choice == last_prey_choice) or (
-                        current_objective == "specialist" and win_count == rounds_target_amount):
+                        (current_objective == "mirror" and hunter_choice == last_prey_choice) and not player_wins) or (
+                        current_objective == "specialist" and win_count == rounds_target_amount) or (
+                        current_objective == "over_9000" and player_wins):
                     print(f"Achievement {achievements_metadata[current_objective]['title']} unlocked!")
                     just_unlocked = True
+                player_wins = False
 
             else:
                 print("This one got away! Perhaps next time...")
@@ -672,6 +710,13 @@ while True:
                     f"Objective {achievements_metadata[current_objective]['title']} failed! Time for a new challenge!")
                 change_objective = True
 
+            if (special_move_counter > 0 and special_move_counter % 3 == 0) and len(powers_pool) > 0:
+                print("You feel divine power coursing through your veins!")
+                power_up = random.choice(powers_pool)
+                player_powers.append(power_up[0])
+                powers_pool.remove(power_up)
+                print(f"You have unlocked '{power_up[0]}'! {power_up[1]}")
+
             if len(unlocked_achievements) == 5:
                 print("You are the master of The Hunt! Well done!")
                 print("Time to try a different game mode.")
@@ -681,11 +726,5 @@ while True:
             if next_hunt == "q":
                 print("\nIt gets to live another day.\n")
                 current_objective = ""
-                # TODO: fix pentru reset
-                # achievements_unlocked = {
-                #
-                # }
                 change_objective = True
                 break
-
-            # break
