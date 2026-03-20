@@ -41,12 +41,12 @@ random_opponents = [
 # Tournament related data
 
 group_standings = [
-    [6,4,2,0],
-    [5,4,3,0],
-    [4,4,3,1],
-    [5,3,3,1],
-    [5,3,2,2],
-    [5,5,2,0],
+    [6, 4, 2, 0],
+    [5, 4, 3, 0],
+    [4, 4, 3, 1],
+    [5, 3, 3, 1],
+    [5, 3, 2, 2],
+    [5, 5, 2, 0],
 ]
 
 # --------------------------------------------------------------------- #
@@ -59,7 +59,7 @@ achievements_metadata = {
     },
     "survivor": {
         "title": "The Survivor",
-        "description": "don't lose for {%} consecutive rounds"
+        "description": "avoid losing for {%} consecutive rounds"
     },
     "over_9000": {
         "title": "Over 9000!",
@@ -71,6 +71,6 @@ achievements_metadata = {
     },
     "balancer": {
         "title": "Balancer",
-        "description": "during the next {&} hands get 2 draws"
+        "description": "get 2 draws during the next {&} hands"
     }
 }

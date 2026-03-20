@@ -602,7 +602,8 @@ while True:
                                    .replace("{&}", str(objective_timer))
                                    )
 
-            print(f"Your current objective is: {achievements_metadata[current_objective]['title']}")
+            print(utility["delimiter"])
+            print(f"\nYour current objective is: {achievements_metadata[current_objective]['title']}")
             print(f"You have to {description_raw} to unlock the achievement")
             print(f"You have {objective_timer} rounds to achieve your objective!")
 
@@ -719,7 +720,7 @@ while True:
 
             if len(unlocked_achievements) == 5:
                 print("You are the master of The Hunt! Well done!")
-                print("Time to try a different game mode.")
+                print("Time to try a different game mode.\n")
                 break
 
             next_hunt = input("Type 'q' to quit, anything else to continue >>> ").lower().strip()
