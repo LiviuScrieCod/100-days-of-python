@@ -105,3 +105,8 @@ actual learning and coding.
   there's nothing to be gained by spending even more time on it
 * Could do some more UI/UX improvements, but I've already spent too much on this project; it was a nice project but
   it's time to move on!
+
+### Day 14: Password Generator
+
+* A classic password generator that takes random elements from several lists (letter, symbols and numbers) and
+  concatenates them into a string (the password)
