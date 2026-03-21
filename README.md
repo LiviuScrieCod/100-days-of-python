@@ -108,5 +108,10 @@ actual learning and coding.
 
 ### Day 14: Password Generator
 
-* A classic password generator that takes random elements from several lists (letter, symbols and numbers) and
+* a classic password generator that takes random elements from several lists (letter, symbols and numbers) and
   concatenates them into a string (the password)
+* I made sure users can only input digits and that they can't get to the next question without providing a valid answer
+* I made sure users can't request targeted characters if it exceeds the requested password length
+* offered users a chance to review all generated passwords during the session (without exiting the program)
+* added small UX elements (timers, ascii art, customer support lines)
+* refactored code and replaced data structures (moved most things in a different file, in a dictionary)
