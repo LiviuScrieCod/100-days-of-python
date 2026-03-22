@@ -56,7 +56,7 @@ validation = {
         "answer": None,
     },
     "letters": {
-        "question": "How many letters do you want?",
+        "question": "Minimum amount of letters?",
         "answer": None,
         "characters": ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
                        't', 'u',
@@ -65,13 +65,13 @@ validation = {
                        'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
     },
     "symbols": {
-        "question": "How many symbols do you want?",
+        "question": "Minimum amount of symbols?",
         "answer": None,
         "characters": ['!', '#', '$', '%', '&', '(', ')', '*', '+', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@',
                        '^', '_'],
     },
     "numbers": {
-        "question": "How many numbers do you want?",
+        "question": "Minimum amount of numbers?",
         "answer": None,
         "characters": ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
     }
@@ -227,3 +227,5 @@ hax0rize = {
         "%": 3
     },
 }
+
+ratings = []
