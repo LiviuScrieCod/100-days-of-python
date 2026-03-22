@@ -116,5 +116,13 @@ actual learning and coding.
 * offered users a chance to review all generated passwords during the session (without exiting the program)
 * added small UX elements (timers, ascii art, customer support lines)
 * refactored code and replaced data structures (moved most things in a different file, in nested dictionaries)
-* decided to add additional functionality - the ability to leet-alize a password and a security audit (both as
-  standalone - user input and evaluation and evaluation at the end of password generation)
+* Among its features are:
+    * the ability to customize password generation (choose specific types of characters as well as the password length)
+    * the ability to leetify a "normal" password; each leetified password also gets a "cool rating"
+    * the ability to audit each password, individually or bulk (a custom evaluation based on length, type of chars used
+      and other variables)
+    * the ability to review the passwords the user created as well as aditional info (generation type, security rating
+      etc.)
+    * a small search function in the vault which retrieves a password + info based on a full or partial user input
+    * the ability to save the passwords collection in a file on the user's computer
+* project done, time to move on!
