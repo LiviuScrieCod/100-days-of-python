@@ -105,3 +105,24 @@ actual learning and coding.
   there's nothing to be gained by spending even more time on it
 * Could do some more UI/UX improvements, but I've already spent too much on this project; it was a nice project but
   it's time to move on!
+
+### Day 14: Password Generator
+
+* a classic password generator that takes random elements from several lists (letter, symbols and numbers) and
+  concatenates them into a string (the password)
+* I made sure users can only input digits and that they can't get to the next question without providing a valid
+  answer (try-except for ValueError management)
+* I made sure users can't request targeted characters if it exceeds the requested password length, handled in real time
+* offered users a chance to review all generated passwords during the session (without exiting the program)
+* added small UX elements (timers, ascii art, customer support lines)
+* refactored code and replaced data structures (moved most things in a different file, in nested dictionaries)
+* Among its features are:
+    * the ability to customize password generation (choose specific types of characters as well as the password length)
+    * the ability to leetify a "normal" password; each leetified password also gets a "cool rating"
+    * the ability to audit each password, individually or bulk (a custom evaluation based on length, type of chars used
+      and other variables)
+    * the ability to review the passwords the user created as well as aditional info (generation type, security rating
+      etc.)
+    * a small search function in the vault which retrieves a password + info based on a full or partial user input
+    * the ability to save the passwords collection in a file on the user's computer
+* project done, time to move on!
