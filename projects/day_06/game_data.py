@@ -1,34 +1,41 @@
 import random
 import math
+import copy
+
+maze_art = {
+    "inner_wall": "#####",
+    "outer_wall": "  #  ",
+    "trap": "  T  ",
+    "exit": "EXIT!",
+    "player": ".  R ",
+    "clear_path": ".    ",
+    "sprung_trap": ". >R<"
+}
 
 
 # TODO:
 # 1.   Generate a maze
 def create_maze(rows, columns):
-    rows += 2
-    columns += 2
     maze = []
     for row_index in range(rows):
         row = []
         if row_index == 0 or row_index == rows - 1:
             for col_index in range(columns):
-                row.append('  #  ')
+                row.append(maze_art['outer_wall'])
         else:
             for col_index in range(columns):
                 if col_index == 0:
-                    row.append('  #  ')
+                    row.append(maze_art['outer_wall'])
                 elif col_index == columns - 1:
-                    row.append('  #  ')
+                    row.append(maze_art['outer_wall'])
                 else:
-                    row.append('.    ')
+                    row.append(maze_art['clear_path'])
         maze.append(row)
     return maze
 
 
 # 1.1. Generate a random maze with an exit (exit at random point)
 def create_maze_exit(rows, columns):
-    rows += 2
-    columns += 2
     walls = ["up", "right", "down", "left"]
     random_wall = random.choice(walls)
 
@@ -46,8 +53,6 @@ def create_maze_exit(rows, columns):
 
 # 1.2. Generate a random maze with random obstacles (dead ends, wall islands etc.)
 def add_obstacles(rows, columns, exit_row, exit_column, obstacles_percentage, maze):
-    rows += 2
-    columns += 2
     maze_surface = rows * columns
     obstacles_total = math.ceil(obstacles_percentage / 100 * maze_surface)
     obstacles_counter = 0
@@ -61,12 +66,12 @@ def add_obstacles(rows, columns, exit_row, exit_column, obstacles_percentage, ma
 
         if near_exit <= 2:
             continue
-        elif maze[r][c] == ".    ":
+        elif maze[r][c] == maze_art['clear_path']:
             trap_or_wall = random.randint(1, 10)
             if trap_or_wall <= 2:
-                maze[r][c] = "  T  "
+                maze[r][c] = maze_art['trap']
             else:
-                maze[r][c] = "#####"
+                maze[r][c] = maze_art['inner_wall']
             obstacles_counter += 1
         else:
             continue
@@ -78,18 +83,16 @@ def add_obstacles(rows, columns, exit_row, exit_column, obstacles_percentage, ma
 # 2.1. Spawn robot at random location in maze
 # 2.2. Spawn robot at random location in maze and make sure maze has a solution
 def spawn_robot(rows, columns, exit_row, exit_column, maze):
-    rows += 2
-    columns += 2
     min_dist_from_exit = (rows - 2 + columns - 2) / 3
 
     while True:
         r = random.randint(1, rows - 2)
         c = random.randint(1, columns - 2)
 
-        if maze[r][c] == ".    ":
+        if maze[r][c] == maze_art['clear_path']:
             safe_spawn = abs(r - exit_row) + abs(c - exit_column)
             if safe_spawn >= min_dist_from_exit:
-                maze[r][c] = ". R  "
+                maze[r][c] = maze_art['player']
                 queue = [(r, c)]
                 visited = set()
                 visited.add((r, c))
@@ -103,8 +106,9 @@ def spawn_robot(rows, columns, exit_row, exit_column, maze):
                     for next_row, next_column in [(-1, 0), (0, 1), (1, 0), (0, -1)]:
                         new_row, new_column = row_index + next_row, column_index + next_column
                         if 0 <= new_row < len(maze) and 0 <= new_column < len(maze[0]):
-                            if maze[new_row][new_column] not in ["#####", "  #  "] and (new_row,
-                                                                                        new_column) not in visited:
+                            if maze[new_row][new_column] not in [maze_art['inner_wall'], maze_art['outer_wall']] and (
+                                    new_row,
+                                    new_column) not in visited:
                                 visited.add((new_row, new_column))
                                 queue.append((new_row, new_column))
 
@@ -123,23 +127,25 @@ def robot_move(current_row, current_column, maze, movement_direction):
 
     destination = maze[new_row][new_column]
 
-    if destination in ["  #  ", "#####"]:
+    if destination in [maze_art['inner_wall'], maze_art['outer_wall']]:
         print("\nWalls hurt face!")
         return current_row, current_column, False
 
-    if destination == "  T  ":
+    if destination == maze_art['trap']:
         print("\nYour foot is stuck in inconvenience!")
+        maze[current_row][current_column] = maze_art['clear_path']
+        maze[new_row][new_column] = maze_art['sprung_trap']
         return new_row, new_column, False
 
-    if destination == "EXIT!":
+    if destination == maze_art['exit']:
         print("\nCongrats! You made it out!")
-        maze[current_row][current_column] = ".    "
-        maze[new_row][new_column] = "  R  "
+        maze[current_row][current_column] = maze_art['clear_path']
+        maze[new_row][new_column] = maze_art['player']
         return new_row, new_column, True
 
-    if destination == ".    ":
-        maze[current_row][current_column] = ".    "
-        maze[new_row][new_column] = "  R  "
+    if destination == maze_art['clear_path']:
+        maze[current_row][current_column] = maze_art['clear_path']
+        maze[new_row][new_column] = maze_art['player']
         return new_row, new_column, False
 
     return current_row, current_column, False
