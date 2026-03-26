@@ -92,7 +92,6 @@ def spawn_robot(rows, columns, exit_row, exit_column, maze):
         if maze[r][c] == maze_art['clear_path']:
             safe_spawn = abs(r - exit_row) + abs(c - exit_column)
             if safe_spawn >= min_dist_from_exit:
-                maze[r][c] = maze_art['player']
                 queue = [(r, c)]
                 visited = set()
                 visited.add((r, c))
@@ -101,6 +100,7 @@ def spawn_robot(rows, columns, exit_row, exit_column, maze):
                     row_index, column_index = queue.pop(0)
 
                     if row_index == exit_row and column_index == exit_column:
+                        maze[r][c] = maze_art['player']
                         return r, c, maze
 
                     for next_row, next_column in [(-1, 0), (0, 1), (1, 0), (0, -1)]:

@@ -25,6 +25,15 @@ while True:
     except ValueError:
         print("Digits only!")
 
+while True:
+    try:
+        obstacle_density = int(input("What obstacle density do you want (15-30%)? >>> "))
+        if 15 <= obstacle_density <= 30:
+            break
+        print("\nKeep it between 15 and 30")
+    except ValueError:
+        print("Digits only!")
+
 rows += 2
 columns += 2
 
@@ -33,13 +42,13 @@ def escape_maze():
     escaped = False
 
     # create maze
-    test_maze = create_maze(10, 10)
-    exit_row, exit_column = create_maze_exit(10, 10)
+    test_maze = create_maze(rows, columns)
+    exit_row, exit_column = create_maze_exit(rows, columns)
     test_maze[exit_row][exit_column] = "EXIT!"
-    final_maze = add_obstacles(10, 10, exit_row, exit_column, 15, test_maze)
+    final_maze = add_obstacles(rows, columns, exit_row, exit_column, obstacle_density, test_maze)
 
     # starting position
-    robot_current_r, robot_current_c, final_maze = spawn_robot(10, 10, exit_row, exit_column, final_maze)
+    robot_current_r, robot_current_c, final_maze = spawn_robot(rows, columns, exit_row, exit_column, final_maze)
     # restart prep
     clean_maze = copy.deepcopy(final_maze)
     restart_robot_current_r = robot_current_r
@@ -55,6 +64,9 @@ def escape_maze():
             if movement_direction in ["w", "a", "s", "d"]:
                 robot_current_r, robot_current_c, escaped = robot_move(robot_current_r, robot_current_c, final_maze,
                                                                        movement_direction)
+                if final_maze[robot_current_r][robot_current_c] == maze_art['exit']:
+                    for row in final_maze:
+                        print(" ".join(row))
                 break
             elif movement_direction == "q":
                 print("\nHA! You remain stuck!\n")
