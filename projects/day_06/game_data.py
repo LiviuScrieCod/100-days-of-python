@@ -8,6 +8,7 @@ maze_art = {
     "trap": "  T  ",
     "exit": "EXIT!",
     "player": ".  R ",
+    "player_victory": "!*R*!",
     "clear_path": ".    ",
     "sprung_trap": ". >R<"
 }
@@ -84,6 +85,7 @@ def add_obstacles(rows, columns, exit_row, exit_column, obstacles_percentage, ma
 # 2.2. Spawn robot at random location in maze and make sure maze has a solution
 def spawn_robot(rows, columns, exit_row, exit_column, maze):
     min_dist_from_exit = (rows - 2 + columns - 2) / 3
+    battery = math.ceil(min_dist_from_exit + 10)
 
     while True:
         r = random.randint(1, rows - 2)
@@ -101,7 +103,7 @@ def spawn_robot(rows, columns, exit_row, exit_column, maze):
 
                     if row_index == exit_row and column_index == exit_column:
                         maze[r][c] = maze_art['player']
-                        return r, c, maze
+                        return r, c, maze, battery
 
                     for next_row, next_column in [(-1, 0), (0, 1), (1, 0), (0, -1)]:
                         new_row, new_column = row_index + next_row, column_index + next_column
@@ -128,27 +130,27 @@ def robot_move(current_row, current_column, maze, movement_direction):
     destination = maze[new_row][new_column]
 
     if destination in [maze_art['inner_wall'], maze_art['outer_wall']]:
-        print("\nWalls hurt face!")
-        return current_row, current_column, False
+        print("\nWalls hurt face!\n")
+        return current_row, current_column, False, 0
 
     if destination == maze_art['trap']:
-        print("\nYour foot is stuck in inconvenience!")
+        print("\nYour foot is stuck in inconvenience!\n")
         maze[current_row][current_column] = maze_art['clear_path']
         maze[new_row][new_column] = maze_art['sprung_trap']
-        return new_row, new_column, False
+        return new_row, new_column, False, 4
 
     if destination == maze_art['exit']:
-        print("\nCongrats! You made it out!")
+        print("\nCongrats! You made it out!\n")
         maze[current_row][current_column] = maze_art['clear_path']
-        maze[new_row][new_column] = maze_art['player']
-        return new_row, new_column, True
+        maze[new_row][new_column] = maze_art['player_victory']
+        return new_row, new_column, True, 1
 
     if destination == maze_art['clear_path']:
         maze[current_row][current_column] = maze_art['clear_path']
         maze[new_row][new_column] = maze_art['player']
-        return new_row, new_column, False
+        return new_row, new_column, False, 1
 
-    return current_row, current_column, False
+    return current_row, current_column, False, 0
 
 # 3.1. Create algorithm to allow robot to navigate the maze
 

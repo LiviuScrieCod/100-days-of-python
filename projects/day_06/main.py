@@ -4,6 +4,8 @@ import random
 import copy
 from game_data import *
 
+game_on = True
+
 print("Welcome to Discounted Game of Labyrinthine adventure - graphics not included\n")
 while True:
     try:
@@ -48,25 +50,55 @@ def escape_maze():
     final_maze = add_obstacles(rows, columns, exit_row, exit_column, obstacle_density, test_maze)
 
     # starting position
-    robot_current_r, robot_current_c, final_maze = spawn_robot(rows, columns, exit_row, exit_column, final_maze)
+    robot_current_r, robot_current_c, final_maze, battery = spawn_robot(rows, columns, exit_row, exit_column,
+                                                                        final_maze)
+
     # restart prep
     clean_maze = copy.deepcopy(final_maze)
     restart_robot_current_r = robot_current_r
     restart_robot_current_c = robot_current_c
+    restart_battery = battery
+
+    def restart_game(clean_maze, restart_robot_current_r, restart_robot_current_c, restart_battery):
+        print(f"\n🔋 REBOOTING... Energy restored to: {restart_battery} units\n")
+        return restart_robot_current_r, restart_robot_current_c, copy.deepcopy(clean_maze), restart_battery
+
     while not escaped:
         os.system("cls" if os.name == "nt" else "clear")
         for row in final_maze:
             print(" ".join(row))
+        print(f"\n🔋 REMAINING ENERGY: {battery} units\n")
+        if battery == 0:
+            print("Your robot ran out of juice... GAME OVER!")
+            while True:
+                restart = input("Try again? [y/n] >>> ")
+                if restart == "y":
+                    robot_current_r, robot_current_c, final_maze, battery = restart_game(clean_maze,
+                                                                                         restart_robot_current_r,
+                                                                                         restart_robot_current_c,
+                                                                                         restart_battery)
+                    break
+                elif restart not in ["y", "n"]:
+                    print("Not an option")
+                elif restart == "n":
+                    escaped = True
+                    break
+            continue
         while True:
             print("\nIf you want to quit type 'q'; type 'r' to restart the level")
             movement_direction = input("Where do you want to go? [w/a/s/d] >>> ")
             print("")
             if movement_direction in ["w", "a", "s", "d"]:
-                robot_current_r, robot_current_c, escaped = robot_move(robot_current_r, robot_current_c, final_maze,
-                                                                       movement_direction)
-                if final_maze[robot_current_r][robot_current_c] == maze_art['exit']:
+                robot_current_r, robot_current_c, escaped, battery_cost = robot_move(robot_current_r, robot_current_c,
+                                                                                     final_maze,
+                                                                                     movement_direction)
+                battery -= battery_cost
+                if escaped:
+                    os.system("cls" if os.name == "nt" else "clear")
                     for row in final_maze:
                         print(" ".join(row))
+                    exit_game = input("Press any key to exit the game >>> ")
+                    break
                 break
             elif movement_direction == "q":
                 print("\nHA! You remain stuck!\n")
@@ -74,12 +106,25 @@ def escape_maze():
                 break
             elif movement_direction == "r":
                 print("\nFine, give it another go...\n")
-                final_maze = copy.deepcopy(clean_maze)
-                robot_current_r = restart_robot_current_r
-                robot_current_c = restart_robot_current_c
+                robot_current_r, robot_current_c, final_maze, battery = restart_game(clean_maze,
+                                                                                     restart_robot_current_r,
+                                                                                     restart_robot_current_c,
+                                                                                     restart_battery)
                 break
             else:
                 print("\nThe robot can only move up, down, left or right")
 
 
-escape_maze()
+while game_on:
+    escape_maze()
+
+    while True:
+        play_again = input("Play again? [y/n] >>> ")
+        if play_again not in ["y", "n"]:
+            print("Didn't quite get that...")
+        elif play_again == "n":
+            print("Run along...")
+            game_on = False
+            break
+        elif play_again == "y":
+            break
