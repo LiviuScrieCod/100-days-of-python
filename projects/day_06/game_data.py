@@ -54,11 +54,21 @@ def create_maze_exit(rows, columns):
 
 # 1.2. Generate a random maze with random obstacles (dead ends, wall islands etc.)
 def add_obstacles(rows, columns, exit_row, exit_column, obstacles_percentage, maze):
-    maze_surface = rows * columns
+    maze_surface = (rows - 2) * (columns - 2)
     obstacles_total = math.ceil(obstacles_percentage / 100 * maze_surface)
     obstacles_counter = 0
+    attempts = 0
 
     while obstacles_counter < obstacles_total:
+        if attempts > 500:
+            if obstacles_total > 5:
+                obstacles_total -= 2
+                attempts = 0
+                print(f"This maze is way to fun! Getting rid of some obstacles to make it playable!")
+            else:
+                break
+
+        attempts += 1
         r = random.randint(1, rows - 2)
         c = random.randint(1, columns - 2)
 
@@ -69,13 +79,14 @@ def add_obstacles(rows, columns, exit_row, exit_column, obstacles_percentage, ma
             continue
         elif maze[r][c] == maze_art['clear_path']:
             trap_or_wall = random.randint(1, 10)
-            if trap_or_wall <= 2:
+            if trap_or_wall <= 3:
                 maze[r][c] = maze_art['trap']
             else:
                 maze[r][c] = maze_art['inner_wall']
             obstacles_counter += 1
-        else:
-            continue
+
+        if obstacles_counter >= obstacles_total:
+            break
 
     return maze
 
