@@ -24,7 +24,7 @@ actual learning and coding.
 * Built the backbone of the hub
 * Wrestled pyscript.json to get things displayed using localhost
 * Managed to get 100 elements rendered on the page, proper info displayed
-* Created a very basic css styling, just to get things looking ok-ish, proper design on the way.
+* Created a very basic CSS styling, just to get things looking ok-ish, proper design on the way.
 
 ### Day 2: First crack at the Python projects
 
@@ -42,7 +42,7 @@ actual learning and coding.
 
 ### Day 4: Still at Band Name Generator project
 
-* Did some testing towards mimicking an mvc system; more work needs to be done
+* Did some testing towards mimicking a mvc system; more work needs to be done
 * Redid the BNG logic to include the option to try generating more names (refactoring)
 * Merged branch
 
@@ -52,7 +52,7 @@ actual learning and coding.
 * A simple "tip calculator" app, meant to take in the bill total, number of customers and tip amount (%) and return the
   user's amount (mean+tip)
 * Decided to give it a sassy voice and include some "dialog"
-* I'm still figuring out the mvc party of the whole project so I focused on app logic exclusively
+* I'm still figuring out the mvc party of the whole project, so I focused on app logic exclusively
 * Finished logic and tested, project done!
 
 ### Day 6: Text adventure
@@ -69,7 +69,7 @@ actual learning and coding.
 * Added a trap and a locked door hiding a treasure
 * Added a B0$$ (chance to hit/miss, critical strikes, boss "phases") fight and covered retreat/defeat/victory
 * Added ASCII art for key moments
-* Added very basic music via powershell with parallel processing; music changes based on context (4 tracks in total)
+* Added very basic music via PowerShell with parallel processing; music changes based on context (4 tracks in total)
 * BBEG and player stats handled in dictionaries
 * Game assets handled in a separate folder as dictionaries
 * Sanitized user inputs in order to avoid user hassle/errors
@@ -103,7 +103,7 @@ actual learning and coding.
 * implemented a flagging/unlock system for achievements and powerups
 * Gave up on the idea of refactoring the code - it's already far exceeded the intended scope of the course project and
   there's nothing to be gained by spending even more time on it
-* Could do some more UI/UX improvements, but I've already spent too much on this project; it was a nice project but
+* Could do some more UI/UX improvements, but I've already spent too much on this project; it was a nice project, but
   it's time to move on!
 
 ### Day 14: Password Generator
@@ -126,3 +126,27 @@ actual learning and coding.
     * a small search function in the vault which retrieves a password + info based on a full or partial user input
     * the ability to save the passwords collection in a file on the user's computer
 * project done, time to move on!
+
+### Day 15-20: Discounted generic get out of the maze game (in ASCII!)
+
+* The project has me working on Reeborg's World, but doing so wouldn't allow me to add anything to the portfolio. As
+  such, I decided to create the whole challenge in Python: create a random maze, add the robot and create an
+  algorithm the robot may use to exit the maze. Easier said than done! 😅
+* What I ended up doing was to create a "micro game engine" (wishful thinking allowed!) that facilitates the
+  creation of fully randomized mazes. Each maze is unique, fully customizable (size, and # of obstacles) and I
+  implemented an algorithm that makes sure each maze is solvable.
+* Users are never spawned too close to the exit, nor is there any chance for the player to be walled in inside the
+  maze (no no-win-scenario spawning)
+* I implemented persistent highscore saving by creating a file in the user's local storage, which saves and
+  overwrites (if necessary) the best 10 scores, even between sessions. I did reduce it in score as it only counts
+  score from maze to maze, instead of gaming session to gaming session. (Yes, bigger, more complex mazes generate a
+  higher score if
+  completed). Scoring takes into account, movement and obstacle navigation inside the maze.
+* I implemented resource management: users have a battery (max number of moves allowed) and encounter Traps (which
+  drain the battery) while they navigate the maze (risk/reward balance)
+* Minor UI/UX elements by formatting the maze and various elements of the game to resemble retro arcade style.
+* Players move through the maze by using w,a,s,d, each move resetting the general view.
+* The game handles state management, separates gameplay from game data, handles I/O in order to "render" graphics
+  and has data persistence. It might not be much, but it's honest work ^_^!
+* could be improved by adding sound, fog of war, battery recharge and other game features, but that would overkill
+  the overkill that has been the project for this "day". Project done, time to move on!
