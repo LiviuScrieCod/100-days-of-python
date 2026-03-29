@@ -58,7 +58,6 @@ def escape_maze():
         if battery <= 0:
             print("Your robot ran out of juice... GAME OVER!")
             print("Your score is 0!")
-            # print(f"You sprung {sprung_traps} traps")
             while True:
                 restart = input("Try again? [y/n] >>> ").strip().lower()
                 if restart == "y":
@@ -141,6 +140,7 @@ def escape_maze():
 
 top_10 = load_highscore()
 while game_on:
+    extra_break = False
     print("Welcome to the Discounted Game of Labyrinthine adventuring - graphics somewhat included\n")
     print("[1] Play")
     print("[2] Hall of Fame")
@@ -153,11 +153,21 @@ while game_on:
         os.system("cls" if os.name == "nt" else "clear")
 
         if not top_10:
+            print("Perhaps you'll be the first to escape!")
+        else:
             width = 30
             print("\n" + "=" * width)
             print("HALL OF FAME".center(width))
             print("=" * width)
-        break
+
+            for i, entry in enumerate(top_10):
+                nr = i + 1
+                name = entry['name']
+                score = entry['score']
+                print(f"{nr:>2}. {name:<7} -------- {score:>9}")
+            print("=" * width)
+        input("\nPress any key to return to the main menu...")
+        continue
     elif game_menu_choice == "1":
         while True:
             print(f"Highscore: {session_highscore}")

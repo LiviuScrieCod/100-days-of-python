@@ -1,6 +1,5 @@
 import random
 import math
-import copy
 
 maze_art = {
     "inner_wall": "#####",
@@ -14,8 +13,6 @@ maze_art = {
 }
 
 
-# TODO:
-# 1.   Generate a maze
 def create_maze(rows, columns):
     maze = []
     for row_index in range(rows):
@@ -35,7 +32,6 @@ def create_maze(rows, columns):
     return maze
 
 
-# 1.1. Generate a random maze with an exit (exit at random point)
 def create_maze_exit(rows, columns):
     walls = ["up", "right", "down", "left"]
     random_wall = random.choice(walls)
@@ -52,7 +48,6 @@ def create_maze_exit(rows, columns):
     return r, c
 
 
-# 1.2. Generate a random maze with random obstacles (dead ends, wall islands etc.)
 def add_obstacles(rows, columns, exit_row, exit_column, obstacles_percentage, maze):
     maze_surface = (rows - 2) * (columns - 2)
     obstacles_total = math.ceil(obstacles_percentage / 100 * maze_surface)
@@ -91,9 +86,6 @@ def add_obstacles(rows, columns, exit_row, exit_column, obstacles_percentage, ma
     return maze
 
 
-# 2.   Spawn robot
-# 2.1. Spawn robot at random location in maze
-# 2.2. Spawn robot at random location in maze and make sure maze has a solution
 def spawn_robot(rows, columns, exit_row, exit_column, maze):
     min_dist_from_exit = (rows - 2 + columns - 2) / 3
     battery = math.ceil(min_dist_from_exit + 10)
@@ -126,7 +118,6 @@ def spawn_robot(rows, columns, exit_row, exit_column, maze):
                                 queue.append((new_row, new_column))
 
 
-# 3.   Get robot to move throughout the maze
 def robot_move(current_row, current_column, maze, movement_direction):
     new_row, new_column = current_row, current_column
     if movement_direction == "w":
@@ -162,10 +153,3 @@ def robot_move(current_row, current_column, maze, movement_direction):
         return new_row, new_column, False, 1
 
     return current_row, current_column, False, 0
-
-# 3.1. Create algorithm to allow robot to navigate the maze
-
-# 4.   Implement extra features
-# 4.1. Scoreboard
-# 4.2. Sounds
-# 4.3. Max moves allowed

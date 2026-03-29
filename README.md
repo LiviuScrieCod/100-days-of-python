@@ -127,9 +127,26 @@ actual learning and coding.
     * the ability to save the passwords collection in a file on the user's computer
 * project done, time to move on!
 
-### Day 15:
+### Day 15-20: Discounted generic get out of the maze game (in ASCII!)
 
 * The project has me working on Reeborg's World, but doing so wouldn't allow me to add anything to the portfolio. As
   such, I decided to create the whole challenge in Python: create a random maze, add the robot and create an
   algorithm the robot may use to exit the maze. Easier said than done! 😅
-* 
+* What I ended up doing was to create a "micro game engine" (wishful thinking allowed!) that facilitates the
+  creation of fully randomized mazes. Each maze is unique, fully customizable (size, and # of obstacles) and I
+  implemented an algorithm that makes sure each maze is solvable.
+* Users are never spawned too close to the exit, nor is there any chance for the player to be walled in inside the
+  maze (no no-win-scenario spawning)
+* I implemented persistent highscore saving by creating a file in the user's local storage, which saves and
+  overwrites (if necessary) the best 10 scores, even between sessions. I did reduce it in score as it only counts
+  score from maze to maze, instead of gaming session to gaming session. (Yes, bigger, more complex mazes generate a
+  higher score if
+  completed). Scoring takes into account, movement and obstacle navigation inside the maze.
+* I implemented resource management: users have a battery (max number of moves allowed) and encounter Traps (which
+  drain the battery) while they navigate the maze (risk/reward balance)
+* Minor UI/UX elements by formatting the maze and various elements of the game to resemble retro arcade style.
+* Players move through the maze by using w,a,s,d, each move resetting the general view.
+* The game handles state management, separates gameplay from game data, handles I/O in order to "render" graphics
+  and has data persistence. It might not be much, but it's honest work ^_^!
+* could be improved by adding sound, fog of war, battery recharge and other game features, but that would overkill
+  the overkill that has been the project for this "day". Project done, time to move on!
